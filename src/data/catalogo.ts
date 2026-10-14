@@ -1,6 +1,7 @@
 import { gatas } from './gatas';
 import { equiposTaller } from './equipos-taller';
 import { sanear } from './limpiar';
+import { fotosCatalogo } from './fotos';
 
 // Catálogo de VENTA de equipos ("Para tu taller").
 // Lo que Hidrofluid repara o fabrica a pedido (soportes de motor, etc.) va en Servicios, no aquí.
@@ -108,6 +109,17 @@ export const categorias: Categoria[] = [
     ],
   },
   {
+    slug: 'izaje-y-manipulacion',
+    nombre: 'Izaje y manipulación',
+    grupo: 'hidraulicos',
+    descripcion: 'Apiladores manuales y tecles de cadena, de palanca y eléctricos para levantar y mover cargas en taller y planta.',
+    icono: 'crane',
+    familias: [
+      { slug: 'apiladores', nombre: 'Apiladores' },
+      { slug: 'tecles', nombre: 'Tecles' },
+    ],
+  },
+  {
     slug: 'carroceria',
     nombre: 'Carrocería y planchado',
     grupo: 'hidraulicos',
@@ -125,6 +137,17 @@ export const categorias: Categoria[] = [
       { slug: 'media', nombre: 'Encastre 1/2"' },
       { slug: 'tres-cuartos', nombre: 'Encastre 3/4"' },
       { slug: 'una', nombre: 'Encastre 1"' },
+    ],
+  },
+  {
+    slug: 'herramientas-de-torque',
+    nombre: 'Herramientas de torque',
+    grupo: 'herramientas',
+    descripcion: 'Torquímetros de dial, de trinquete y digitales, y llaves de torque eléctricas y a batería para ajuste controlado.',
+    icono: 'wrench',
+    familias: [
+      { slug: 'llaves-de-torque', nombre: 'Llaves de torque' },
+      { slug: 'torquimetros', nombre: 'Torquímetros' },
     ],
   },
   {
@@ -278,8 +301,53 @@ const otros: Producto[] = [
   },
 ];
 
+// Productos con foto en fondo blanco (carpeta Imagenes/, convertidas con scripts/png-a-fondo-blanco.py).
+// Sin marca, código ni precio: se completan cuando el taller los confirme.
+type Nuevo = [slug: string, nombre: string, categoria: string, familia: string | undefined, resumen: string];
+const fichasNuevas: Nuevo[] = [
+  ['elevador-de-tijera', 'Elevador de tijera', 'elevadores', 'tijera', 'Elevador de tijera con rampas de acceso para subir el vehículo y trabajar cómodo en la parte baja.'],
+  ['elevador-de-rampas', 'Elevador de rampas', 'elevadores', undefined, 'Elevador de rampas de estructura reforzada para el mantenimiento de vehículos en taller.'],
+  ['llave-de-torque-electrica', 'Llave de torque eléctrica', 'herramientas-de-torque', 'llaves-de-torque', 'Llave de torque eléctrica con brazo de reacción para ajustar pernos grandes con torque controlado.'],
+  ['llave-de-torque-a-bateria', 'Llave de torque a batería', 'herramientas-de-torque', 'llaves-de-torque', 'Llave de torque a batería con brazo de reacción, sin cables, para ajustar pernos en campo.'],
+  ['llave-de-torque-con-reaccion', 'Llave de torque con brazo de reacción', 'herramientas-de-torque', 'llaves-de-torque', 'Llave de torque con brazo de reacción y cable de alimentación para ajuste de pernos de alta exigencia.'],
+  ['torquimetro-de-brazo-largo', 'Torquímetro de brazo largo', 'herramientas-de-torque', 'torquimetros', 'Torquímetro de brazo largo para aplicar torques altos con menos esfuerzo.'],
+  ['torquimetro-de-dial', 'Torquímetro de dial', 'herramientas-de-torque', 'torquimetros', 'Torquímetro con carátula de dial para leer el torque aplicado mientras se ajusta.'],
+  ['torquimetro-de-trinquete', 'Torquímetro de trinquete', 'herramientas-de-torque', 'torquimetros', 'Torquímetro de trinquete para ajustar tuercas y pernos al torque indicado.'],
+  ['torquimetro-digital', 'Torquímetro digital', 'herramientas-de-torque', 'torquimetros', 'Torquímetro digital con pantalla para leer y controlar el torque con precisión.'],
+  ['apilador-hidraulico-manual', 'Apilador manual', 'izaje-y-manipulacion', 'apiladores', 'Apilador manual de mástil con horquillas para levantar, mover y acomodar cargas en almacén y taller.'],
+  ['tecle-de-cadena-0-5-ton', 'Tecle de cadena 0.5 ton', 'izaje-y-manipulacion', 'tecles', 'Tecle de cadena de 0.5 toneladas para izaje manual de cargas.'],
+  ['tecle-de-palanca', 'Tecle de palanca', 'izaje-y-manipulacion', 'tecles', 'Tecle de palanca para levantar, jalar y tensar cargas en espacios reducidos.'],
+  ['tecle-electrico', 'Tecle eléctrico', 'izaje-y-manipulacion', 'tecles', 'Tecle eléctrico de cadena con carro para izaje continuo de cargas en planta.'],
+  ['hidrolavadora-agua-fria', 'Hidrolavadora de agua fría', 'hidrolavadoras', undefined, 'Hidrolavadora a presión de agua fría con ruedas, manguera y pistola para limpieza en taller y planta.'],
+  ['hidrolavadora-agua-caliente', 'Hidrolavadora de agua caliente', 'hidrolavadoras', undefined, 'Hidrolavadora a presión de agua caliente para retirar grasa y aceite en talleres y plantas.'],
+  ['hidrolavadora-a-gasolina', 'Hidrolavadora a gasolina', 'hidrolavadoras', undefined, 'Hidrolavadora a presión con motor a gasolina, para limpiar donde no hay conexión eléctrica.'],
+  ['gata-botella-50-ton', 'Gata botella 50 ton', 'gatas-de-taller', 'botella', 'Gata botella hidráulica de 50 toneladas para levantar cargas pesadas.'],
+  ['bandeja-de-drenaje-de-aceite', 'Bandeja de drenaje de aceite', 'lubricacion', 'aceite', 'Bandeja de drenaje con ruedas y rejilla para recoger el aceite usado del vehículo.'],
+  ['bomba-de-grasa-con-carrito', 'Bomba de grasa con carrito', 'lubricacion', 'engrase', 'Bomba de grasa neumática montada en carrito para engrasar equipos en taller y planta.'],
+  ['equipos-de-engrase', 'Equipos de engrase', 'lubricacion', 'engrase', 'Equipos de engrase: bombas, carrete retráctil y pistolas de engrase para flotas y talleres.'],
+  ['llave-de-impacto-inalambrica-18v', 'Llave de impacto inalámbrica 18V', 'pistolas-de-impacto', undefined, 'Llave de impacto inalámbrica de 18 V para aflojar y ajustar tuercas sin cable ni compresor.'],
+  ['llave-de-impacto-neumatica', 'Llave de impacto neumática', 'pistolas-de-impacto', undefined, 'Llave de impacto neumática para aflojar y ajustar tuercas de neumáticos y de alto torque.'],
+  ['prensa-con-compresor-de-resortes', 'Prensa con compresor de resortes', 'prensas-hidraulicas', undefined, 'Prensa hidráulica de taller con compresor de resortes para trabajos de suspensión.'],
+  ['prensa-hidraulica-de-taller', 'Prensa hidráulica de taller', 'prensas-hidraulicas', undefined, 'Prensa hidráulica de bastidor para montaje y desmontaje de rodamientos, bujes y piezas a presión.'],
+  ['pluma-hidraulica-de-taller', 'Pluma hidráulica de taller', 'plumas-hidraulicas', undefined, 'Pluma hidráulica con base rodante para izar y trasladar motores y piezas pesadas en taller.'],
+  ['plumas-plegables', 'Plumas plegables', 'plumas-hidraulicas', undefined, 'Plumas hidráulicas plegables que ocupan poco espacio al guardarlas.'],
+  ['soporte-de-motor', 'Soporte de motor', 'plumas-hidraulicas', undefined, 'Soporte giratorio de motor con ruedas para armar y reparar motores en taller.'],
+];
+const nuevos: Producto[] = fichasNuevas.map(([slug, nombre, categoria, familia, resumen]) => ({
+  slug,
+  nombre,
+  categoria,
+  ...(familia ? { familia } : {}),
+  resumen,
+  foto: slug,
+  pendiente: true,
+}));
+
 // Se quitan marcas y códigos de todos los nombres; ver limpiar.ts.
-export const productos: Producto[] = sanear([...otros, ...gatas, ...equiposTaller]);
+// Si existe src/assets/productos/<slug>.jpg, esa es la foto del producto (ver scripts/procesar-descargas.py).
+export const productos: Producto[] = sanear([...otros, ...nuevos, ...gatas, ...equiposTaller]).map((p) =>
+  !p.foto && fotosCatalogo[p.slug] ? { ...p, foto: p.slug } : p,
+);
 
 export const categoria = (slug: string) => categorias.find((c) => c.slug === slug);
 export const categoriasDe = (grupo: string) => categorias.filter((c) => c.grupo === grupo);

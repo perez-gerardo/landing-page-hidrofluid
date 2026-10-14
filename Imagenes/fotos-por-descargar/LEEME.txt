@@ -1,0 +1,12 @@
+Fotos por descargar de internet
+================================
+Aqui van SOLO las fotos que descargues. Lo que ya se entrego esta en la carpeta "organizacion fotos".
+
+Orden: Categoria / Tipo (igual que los filtros de la web).
+Cada carpeta con modelos pendientes tiene un LEEME.txt con el nombre exacto de cada foto.
+Las fotos que ya estan en estas carpetas ya se publicaron en la web.
+
+Cual foto sirve: el equipo solo, fondo blanco o transparente, sin personas ni textos, minimo 800 px.
+
+Faltan en total: 7
+Para publicar las nuevas: python scripts/procesar-descargas.py y luego npm run build.

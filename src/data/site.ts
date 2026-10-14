@@ -73,7 +73,6 @@ export const serviciosHome = [
 export const nosotros = {
   resumen:
     'HIDROFLUID SERVICE S.A.C. es una empresa peruana con taller propio en Santa Anita. Vendemos, damos mantenimiento, fabricamos y alquilamos equipos industriales y automotrices, con más de 10 años de experiencia.',
-  filosofia: 'Trabajamos con compromiso, eficiencia y excelencia para superar tus expectativas y garantizar tu satisfacción.',
   mision: 'Ser líderes en la importación y distribución de productos de alta calidad para satisfacer y solucionar las necesidades de nuestros clientes.',
   vision: 'Mantener un sólido posicionamiento y liderazgo, brindando oportunidades de negocio a nuestros clientes a través de la competitividad y la excelencia.',
   valores: ['Compromiso', 'Calidad', 'Experiencia', 'Respuesta rápida'],
