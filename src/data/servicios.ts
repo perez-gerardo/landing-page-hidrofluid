@@ -78,6 +78,7 @@ export const servicios: Servicio[] = [
           { nombre: 'Gata de transmisión' },
           { nombre: 'Prensa hidráulica' },
           { nombre: 'Pluma hidráulica' },
+          { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'soporte-de-motor' },
         ],
       },
       {

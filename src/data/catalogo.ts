@@ -331,7 +331,6 @@ const fichasNuevas: Nuevo[] = [
   ['prensa-hidraulica-de-taller', 'Prensa hidráulica de taller', 'prensas-hidraulicas', undefined, 'Prensa hidráulica de bastidor para montaje y desmontaje de rodamientos, bujes y piezas a presión.'],
   ['pluma-hidraulica-de-taller', 'Pluma hidráulica de taller', 'plumas-hidraulicas', undefined, 'Pluma hidráulica con base rodante para izar y trasladar motores y piezas pesadas en taller.'],
   ['plumas-plegables', 'Plumas plegables', 'plumas-hidraulicas', undefined, 'Plumas hidráulicas plegables que ocupan poco espacio al guardarlas.'],
-  ['soporte-de-motor', 'Soporte de motor', 'plumas-hidraulicas', undefined, 'Soporte giratorio de motor con ruedas para armar y reparar motores en taller.'],
 ];
 const nuevos: Producto[] = fichasNuevas.map(([slug, nombre, categoria, familia, resumen]) => ({
   slug,
