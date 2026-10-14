@@ -1,0 +1,34 @@
+---
+// Banner "Nuestros clientes" franja oscura con logos en desplazamiento lento.
+import { Image } from 'astro:assets';
+import { clientes } from '../data/site';
+
+const logos = import.meta.glob<{ default: ImageMetadata }>('../assets/clientes/*.png', { eager: true });
+const logo = (n: string | null) => (n ? logos[`../assets/clientes/${n}.png`]?.default : undefined);
+---
+
+<section class="clientes on-dark" aria-labelledby="clientes-t">
+  <div class="wrap">
+    <h2 class="clientes-t" id="clientes-t">Nuestros clientes</h2>
+  </div>
+  <div class="clientes-track" role="list">
+    {
+      [0, 1].map((copia) => (
+        <ul class="clientes-lista" aria-hidden={copia === 1 ? 'true' : undefined}>
+          {clientes.map((c) => {
+            const l = logo(c.logo);
+            return (
+              <li class="cliente" role={copia === 0 ? 'listitem' : undefined}>
+                {l ? (
+                  <Image src={l} alt={copia === 0 ? ('alt' in c ? c.alt : c.nombre) : ''} height={64} densities={[1, 2]} loading="lazy" />
+                ) : (
+                  <span class="cliente-nombre">{c.nombre}</span>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      ))
+    }
+  </div>
+</section>

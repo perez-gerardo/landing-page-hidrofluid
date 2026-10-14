@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: { nombre: string; href?: string }[];
+}
+const { items } = Astro.props;
+const site = Astro.site!;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((it, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: it.nombre,
+    ...(it.href ? { item: new URL(it.href, site).href } : {}),
+  })),
+};
+---
+
+<nav class="crumbs" aria-label="Ruta de navegación">
+  <ol>
+    {
+      items.map((it, i) => (
+        <li>
+          {it.href && i < items.length - 1 ? <a href={it.href}>{it.nombre}</a> : <span aria-current="page">{it.nombre}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />

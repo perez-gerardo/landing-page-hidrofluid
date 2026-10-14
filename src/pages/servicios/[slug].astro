@@ -1,0 +1,166 @@
+---
+// Página de servicio: hero de texto, índice pegajoso y un bloque por grupo de equipos
+// (título pegajoso a la izquierda, tarjetas con espacio de foto a la derecha).
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { servicios, type Servicio } from '../../data/servicios';
+import { fotoServicio } from '../../data/fotos';
+import { empresa, wa } from '../../data/site';
+import { titulo, descripcion } from '../../data/seo';
+
+export const getStaticPaths = (() => servicios.map((s) => ({ params: { slug: s.slug }, props: { s } }))) satisfies GetStaticPaths;
+
+interface Props {
+  s: Servicio;
+}
+const { s } = Astro.props;
+const otros = servicios.filter((x) => x.slug !== s.slug);
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: s.titulo,
+  serviceType: s.bajada,
+  description: s.intro,
+  areaServed: { '@type': 'City', name: 'Lima' },
+  provider: { '@type': 'LocalBusiness', name: empresa.nombre, telephone: empresa.telefonos[0].tel },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: s.titulo,
+    itemListElement: s.grupos.flatMap((g) => g.equipos.map((e) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: `${s.menu}: ${e.nombre}` } }))),
+  },
+};
+---
+
+<Layout title={titulo(s.seo.titulo)} description={descripcion(s.seo.descripcion)}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(ld)} />
+
+  <section class="svc-hero on-dark">
+    <div class="wrap svc-hero-inner svc-hero-solo">
+      <Breadcrumb items={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Servicios', href: '/#servicios' }, { nombre: s.menu, href: `/servicios/${s.slug}` }]} />
+      <span class="eyebrow">{s.bajada}</span>
+      <h1 class="svc-title">{s.titulo}</h1>
+      <p class="lead">{s.intro}</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href={wa(s.menu)} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  {
+    s.grupos.length > 1 && (
+      <nav class="svc-index" aria-label="Equipos de este servicio">
+        <div class="wrap svc-index-inner">
+          {s.grupos.map((g) => (
+            <a href={`#${g.id}`} data-spy={g.id}>
+              {g.titulo}
+            </a>
+          ))}
+        </div>
+      </nav>
+    )
+  }
+
+  {
+    s.grupos.map((g, i) => (
+      <section class:list={['svc-block', { 'is-alt': i % 2 === 1 }]} id={g.id} aria-labelledby={`${g.id}-t`}>
+        <div class="wrap svc-block-inner">
+          <header class="svc-block-head">
+            <div class="svc-block-sticky">
+              <span class="svc-block-n">{String(i + 1).padStart(2, '0')}</span>
+              <h2 class="svc-block-title" id={`${g.id}-t`}>{g.titulo}</h2>
+              <p class="body">{g.resumen}</p>
+              <ul class="svc-types" aria-label="Tipos">
+                {g.equipos.map((e) => <li>{e.nombre}</li>)}
+              </ul>
+              <a class="btn btn-sm btn-primary" href={wa(`${s.menu}: ${g.titulo}`)} target="_blank" rel="noopener">Cotizar este grupo</a>
+            </div>
+          </header>
+
+          <div class="svc-items">
+            {g.equipos.map((e) => {
+              const f = fotoServicio(e.foto);
+              return (
+                <article class="svc-item">
+                  <div class="svc-item-media">
+                    {f ? (
+                      <Image src={f} alt={`${e.nombre}, ${s.menu.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 720px) 100vw, 320px" />
+                    ) : (
+                      <span class="svc-item-ph" role="img" aria-label={`Foto de ${e.nombre} en preparación`}>
+                        <span>Foto en preparación</span>
+                      </span>
+                    )}
+                  </div>
+                  <div class="svc-item-body">
+                    <h3 class="svc-item-name">{e.nombre}</h3>
+                    {e.detalle && <p class="body">{e.detalle}</p>}
+                    <a class="card-link" href={wa(`${s.menu}: ${e.nombre}`)} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section problem">
+    <div class="wrap problem-grid" style="padding-top: 0">
+      <div class="section-head">
+        <span class="eyebrow">Incluye</span>
+        <h2 class="h2">Trabajo documentado y con garantía</h2>
+        <p class="lead">Atendemos en nuestro taller de {empresa.distrito} o en tu planta en Lima.</p>
+      </div>
+      <div class="solution">
+        <ul class="checks" style="margin-top: 0">
+          {s.incluye.map((i) => <li>{i}</li>)}
+        </ul>
+        <a class="btn btn-accent" href={wa(s.menu)} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Otros servicios">
+    <div class="wrap">
+      <h2 class="h3" style="margin-bottom: var(--s300)">Otros servicios</h2>
+      <div class="cat-grid">
+        {
+          otros.map((o) => (
+            <a class="cat-card" href={`/servicios/${o.slug}`}>
+              <span class="cat-body">
+                <span class="cat-name">{o.menu}</span>
+                <span class="cat-desc">{o.bajada}</span>
+                <span class="cat-count">Ver servicio</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Marca en el índice el grupo que estás viendo. Sin listeners de scroll: IntersectionObserver.
+  const links = new Map<string, HTMLElement>();
+  document.querySelectorAll<HTMLElement>('[data-spy]').forEach((a) => links.set(a.dataset.spy!, a));
+  if (links.size && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          links.forEach((a) => a.removeAttribute('aria-current'));
+          links.get(e.target.id)?.setAttribute('aria-current', 'true');
+        });
+      },
+      { rootMargin: '-35% 0px -55% 0px' },
+    );
+    links.forEach((_, id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+</script>

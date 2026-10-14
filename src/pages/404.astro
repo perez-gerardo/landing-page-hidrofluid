@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { wa } from '../data/site';
+---
+
+<Layout title="Página no encontrada | Hidrofluid Service" description="La página que buscas no existe." noindex>
+  <div class="wrap notfound">
+    <span class="code" aria-hidden="true">404</span>
+    <h1 class="h2">No encontramos esta página</h1>
+    <p class="lead">Es posible que el enlace haya cambiado. Vuelve al inicio o escríbenos y te ayudamos con tu equipo.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Volver al inicio</a>
+      <a class="btn btn-wa" href={wa('un equipo que necesito')} target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</Layout>

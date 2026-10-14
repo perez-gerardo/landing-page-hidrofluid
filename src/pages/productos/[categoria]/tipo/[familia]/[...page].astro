@@ -1,0 +1,25 @@
+---
+// Una página por tipo (por ejemplo /productos/gatas-de-taller/tipo/lagarto): mejor para filtrar y para SEO.
+import type { GetStaticPaths, Page } from 'astro';
+import CatalogListing from '../../../../../components/CatalogListing.astro';
+import { categorias, productosDe, type Producto, type Categoria } from '../../../../../data/catalogo';
+
+export const getStaticPaths = (({ paginate }) =>
+  categorias.flatMap((c) =>
+    (c.familias ?? []).flatMap((f) => {
+      const items = productosDe(c.slug).filter((p) => p.familia === f.slug);
+      return items.length
+        ? paginate(items, { params: { categoria: c.slug, familia: f.slug }, props: { cat: c, familia: f.slug }, pageSize: 12 })
+        : [];
+    }),
+  )) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<Producto>;
+  cat: Categoria;
+  familia: string;
+}
+const { page, cat, familia } = Astro.props;
+---
+
+<CatalogListing page={page} cat={cat} familia={familia} />

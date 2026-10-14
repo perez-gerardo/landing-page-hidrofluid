@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-hidrofluid.png';
+import logoBlanco from '../assets/brand/logo-hidrofluid-blanco.png';
+
+interface Props {
+  variante?: 'color' | 'blanco';
+  href?: string;
+  loading?: 'eager' | 'lazy';
+}
+const { variante = 'color', href = '/#inicio', loading = 'eager' } = Astro.props;
+---
+
+<a class="brand" href={href} aria-label="Hidrofluid Service, ir al inicio">
+  <Image
+    class="brand-logo"
+    src={variante === 'blanco' ? logoBlanco : logo}
+    alt="Hidrofluid Service SAC"
+    height={48}
+    densities={[1, 2]}
+    loading={loading}
+    fetchpriority={loading === 'eager' ? 'high' : 'auto'}
+  />
+</a>

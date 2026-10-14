@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { categorias, productosDe } from '../../data/catalogo';
+import { fotoProducto } from '../../data/fotos';
+
+const tarjetas = categorias.map((c) => {
+  const items = productosDe(c.slug);
+  const conFoto = items.find((p) => fotoProducto(p.foto));
+  return { ...c, total: items.length, foto: conFoto ? fotoProducto(conFoto.foto) : null };
+});
+---
+
+<Layout title="Venta de equipos para taller | Hidrofluid Service" description="Gatas, prensas, elevadores, compresoras, pistolas de impacto y más equipos para tu taller. Cotiza por WhatsApp con Hidrofluid Service, Santa Anita.">
+  <div class="wrap catalog">
+    <Breadcrumb items={[{ nombre: 'Inicio', href: '/' }, { nombre: 'Venta de equipos', href: '/productos' }]} />
+    <header class="catalog-head">
+      <h1 class="catalog-title">Venta de equipos para tu taller</h1>
+      <p class="lead">Equipos hidráulicos, neumáticos y de taller con asesoría técnica, garantía y servicio de mantenimiento en Santa Anita, Lima.</p>
+    </header>
+    <ul class="cat-grid">
+      {
+        tarjetas.map((c) => (
+          <li>
+            <a class="cat-card" href={`/productos/${c.slug}`}>
+              <span class:list={['cat-img', { 'is-blanco': c.foto?.blanco }]}>
+                {c.foto ? (
+                  <Image src={c.foto.img} alt="" widths={[320, 480, 640]} sizes="(max-width: 720px) 50vw, 280px" />
+                ) : (
+                  <Icon name={c.icono} class="ico-lg" />
+                )}
+              </span>
+              <span class="cat-body">
+                <span class="cat-name">{c.nombre}</span>
+                <span class="cat-desc">{c.descripcion}</span>
+                <span class="cat-count">
+                  {c.total > 0 ? `${c.total} ${c.total === 1 ? 'producto' : 'productos'}` : 'Cotiza por WhatsApp'}
+                  <Icon name="arrowRight" class="ico-sm" />
+                </span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>

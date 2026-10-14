@@ -1,0 +1,2 @@
+Fotos de equipos para las páginas de servicio (4:3, fondo limpio, sin logos ni marcas).
+Nombre del archivo = el valor de `foto` en src/data/servicios.ts.

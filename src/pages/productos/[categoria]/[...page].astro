@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import CatalogListing from '../../../components/CatalogListing.astro';
+import { categorias, productosDe, type Producto, type Categoria } from '../../../data/catalogo';
+
+export const getStaticPaths = (({ paginate }) =>
+  categorias.flatMap((c) => paginate(productosDe(c.slug), { params: { categoria: c.slug }, props: { cat: c }, pageSize: 12 }))) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<Producto>;
+  cat: Categoria;
+}
+const { page, cat } = Astro.props;
+---
+
+<CatalogListing page={page} cat={cat} />

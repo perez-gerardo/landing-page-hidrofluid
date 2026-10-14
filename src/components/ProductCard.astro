@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import { fotoProducto } from '../data/fotos';
+import { precio, type Producto } from '../data/catalogo';
+import { wa } from '../data/site';
+
+interface Props {
+  p: Producto;
+}
+const { p } = Astro.props;
+const f = fotoProducto(p.foto);
+const href = `/producto/${p.slug}`;
+---
+
+<article class="pcard" data-familia={p.familia ?? ''} data-nombre={p.nombre}>
+  <a class:list={['pcard-img', { 'is-blanco': f?.blanco }]} href={href} tabindex="-1" aria-hidden="true">
+    {
+      f ? (
+        <Image src={f.img} alt="" widths={[320, 480, 640]} sizes="(max-width: 720px) 50vw, 280px" />
+      ) : (
+        <span class="pcard-ph"><span>Foto en preparación</span></span>
+      )
+    }
+  </a>
+  <div class="pcard-body">
+    <h3 class="pcard-name"><a href={href}>{p.nombre}</a></h3>
+    {p.capacidad && <p class="pcard-meta"><strong>Capacidad:</strong> {p.capacidad}</p>}
+    <p class="pcard-price">{precio(p)}</p>
+    <a class="btn btn-sm btn-primary btn-block" href={wa(p.nombre)} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+  </div>
+</article>

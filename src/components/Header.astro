@@ -1,0 +1,93 @@
+---
+// Header sólido. "Venta de equipos" abre un menú por grupos 
+// y "Servicios" lista las páginas de servicio .
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { empresa, wa } from '../data/site';
+import { grupos, categoriasDe } from '../data/catalogo';
+import { servicios } from '../data/servicios';
+
+const enlaces = [
+  { texto: 'Nosotros', href: '/#nosotros' },
+  { texto: 'Ubicación', href: '/#ubicacion' },
+];
+const ruta = Astro.url.pathname;
+const enCatalogo = ruta.startsWith('/productos') || ruta.startsWith('/producto/');
+const enServicios = ruta.startsWith('/servicios');
+---
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span>{empresa.distrito}, {empresa.ciudad} · Venta, mantenimiento, fabricación y alquiler de equipos</span>
+    <a href={`tel:${empresa.telefonos[0].tel}`}>{empresa.telefonos[0].texto}</a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <Logo href="/" />
+    <nav class="main-nav" aria-label="Principal">
+      <div class="dropdown">
+        <a class:list={['nav-item', { 'is-current': enCatalogo }]} href="/productos" aria-current={enCatalogo ? 'page' : undefined}>
+          Venta de equipos <Icon name="caretDown" class="ico-sm" />
+        </a>
+        <div class="dropdown-panel dropdown-mega">
+          <div class="mega-cols">
+            {
+              grupos.map((g) => (
+                <div>
+                  <p class="mega-h">{g.nombre}</p>
+                  <ul>
+                    {categoriasDe(g.slug).map((c) => (
+                      <li>
+                        <a class:list={[{ 'is-current': ruta.startsWith(`/productos/${c.slug}`) }]} href={`/productos/${c.slug}`}>{c.nombre}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+          <a class="dropdown-all" href="/productos">Ver todo el catálogo</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class:list={['nav-item', { 'is-current': enServicios }]} href="/#servicios">
+          Servicios <Icon name="caretDown" class="ico-sm" />
+        </a>
+        <div class="dropdown-panel">
+          <ul>
+            {servicios.map((s) => (
+              <li>
+                <a class:list={[{ 'is-current': ruta.startsWith(`/servicios/${s.slug}`) }]} href={`/servicios/${s.slug}`}>{s.menu}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      {enlaces.map((l) => <a class="nav-item" href={l.href}>{l.texto}</a>)}
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-sm btn-primary" href={wa()} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" aria-hidden="true">
+  <a class="menu-link" href="/productos">Venta de equipos</a>
+  {
+    grupos.map((g) => (
+      <div class="menu-cats">
+        <span class="menu-h">{g.nombre}</span>
+        {categoriasDe(g.slug).map((c) => <a href={`/productos/${c.slug}`}>{c.nombre}</a>)}
+      </div>
+    ))
+  }
+  <a class="menu-link" href="/#servicios">Servicios</a>
+  <div class="menu-cats">
+    {servicios.map((s) => <a href={`/servicios/${s.slug}`}>{s.menu}</a>)}
+  </div>
+  {enlaces.map((l) => <a class="menu-link" href={l.href}>{l.texto}</a>)}
+  <a class="btn btn-primary menu-cta" href={wa()} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+</div>

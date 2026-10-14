@@ -1,0 +1,136 @@
+---
+// Ficha de producto: foto en fondo blanco, datos clave, cotización y productos relacionados.
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { categoria, precio, productos, productosDe, type Producto } from '../../data/catalogo';
+import { fotoProducto } from '../../data/fotos';
+import { empresa, wa } from '../../data/site';
+import { titulo, descripcion } from '../../data/seo';
+import { getImage } from 'astro:assets';
+
+export const getStaticPaths = (() => productos.map((p) => ({ params: { slug: p.slug }, props: { p } }))) satisfies GetStaticPaths;
+
+interface Props {
+  p: Producto;
+}
+const { p } = Astro.props;
+const cat = categoria(p.categoria)!;
+const f = fotoProducto(p.foto);
+const familia = cat.familias?.find((x) => x.slug === p.familia);
+const relacionados = productosDe(p.categoria).filter((x) => x.slug !== p.slug).slice(0, 4);
+
+const datos: [string, string][] = [
+  ...(p.capacidad ? [['Capacidad', p.capacidad] as [string, string]] : []),
+  ['Categoría', cat.nombre],
+  ...(familia ? [['Tipo', familia.nombre] as [string, string]] : []),
+  ...(p.specs ?? []),
+];
+
+const imgUrl = f ? new URL((await getImage({ src: f.img, width: 1200, format: 'jpeg' })).src, Astro.site).href : undefined;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: p.nombre,
+  description: p.resumen,
+  category: cat.nombre,
+  ...(imgUrl ? { image: [imgUrl] } : {}),
+  ...(p.precio
+    ? {
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'PEN',
+          price: p.precio,
+          availability: 'https://schema.org/InStock',
+          seller: { '@type': 'Organization', name: empresa.nombre },
+          url: new URL(`/producto/${p.slug}`, Astro.site).href,
+        },
+      }
+    : {}),
+};
+---
+
+<Layout title={titulo(p.nombre)} description={descripcion(`${p.nombre} en venta en Lima. Cotiza por WhatsApp con Hidrofluid Service, taller en Santa Anita.`)}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(ld)} />
+  <div class="wrap catalog">
+    <Breadcrumb
+      items={[
+        { nombre: 'Inicio', href: '/' },
+        { nombre: 'Venta de equipos', href: '/productos' },
+        { nombre: cat.nombre, href: `/productos/${cat.slug}` },
+        { nombre: p.nombre, href: `/producto/${p.slug}` },
+      ]}
+    />
+
+    <div class="pdp">
+      <div class:list={['pdp-img', { 'is-blanco': f?.blanco }]}>
+        {
+          f ? (
+            <Image src={f.img} alt={`${p.nombre}, venta en Hidrofluid Service`} widths={[480, 720, 960, 1200]} sizes="(max-width: 960px) 100vw, 560px" loading="eager" fetchpriority="high" />
+          ) : (
+            <span class="pcard-ph"><span>Foto en preparación</span></span>
+          )
+        }
+      </div>
+
+      <div class="pdp-info">
+        <h1 class="pdp-title">{p.nombre}</h1>
+        <p class="pdp-price">{precio(p)}</p>
+        <p class="lead">{p.resumen}</p>
+
+        <div class="pdp-actions">
+          <a class="btn btn-wa" href={wa(p.nombre)} target="_blank" rel="noopener"><Icon name="whatsapp" class="ico-sm" /> Cotizar por WhatsApp</a>
+        </div>
+
+        <ul class="pdp-trust">
+          <li>Garantía por escrito</li>
+          <li>Mantenimiento y repuestos en nuestro taller</li>
+          <li>Entrega en Lima, coordinada por WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pdp-details">
+      <section aria-labelledby="ficha-t">
+        <h2 class="h3" id="ficha-t">Ficha técnica</h2>
+        <table class="specs">
+          <tbody>
+            {datos.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+          </tbody>
+        </table>
+      </section>
+      {
+        p.caracteristicas && p.caracteristicas.length > 0 && (
+          <section aria-labelledby="carac-t">
+            <h2 class="h3" id="carac-t">Características</h2>
+            <ul class="checks checks-light">
+              {p.caracteristicas.map((u) => <li>{u}</li>)}
+            </ul>
+          </section>
+        )
+      }
+      {
+        p.usos && p.usos.length > 0 && (
+          <section aria-labelledby="usos-t">
+            <h2 class="h3" id="usos-t">Usos recomendados</h2>
+            <ul class="checks checks-light">
+              {p.usos.map((u) => <li>{u}</li>)}
+            </ul>
+          </section>
+        )
+      }
+    </div>
+
+    {
+      relacionados.length > 0 && (
+        <section class="related" aria-labelledby="rel-t">
+          <h2 class="h3" id="rel-t">Productos relacionados</h2>
+          <div class="pgrid">{relacionados.map((r) => <ProductCard p={r} />)}</div>
+        </section>
+      )
+    }
+  </div>
+</Layout>

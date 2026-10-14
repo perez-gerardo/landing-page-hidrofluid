@@ -1,0 +1,146 @@
+---
+// Listado de categoría estilo tienda: migas, título, conteo, tipos (como páginas propias), orden y paginación.
+// Lo usan /productos/<categoria> y /productos/<categoria>/tipo/<familia>.
+import type { Page } from 'astro';
+import Layout from '../layouts/Layout.astro';
+import Icon from './Icon.astro';
+import Breadcrumb from './Breadcrumb.astro';
+import ProductCard from './ProductCard.astro';
+import { categorias, productosDe, type Producto, type Categoria } from '../data/catalogo';
+import { wa } from '../data/site';
+import { titulo as tituloSeo, descripcion as descripcionSeo } from '../data/seo';
+
+interface Props {
+  page: Page<Producto>;
+  cat: Categoria;
+  familia?: string;
+}
+const { page, cat, familia } = Astro.props;
+const fam = cat.familias?.find((f) => f.slug === familia);
+const base = fam ? `/productos/${cat.slug}/tipo/${fam.slug}` : `/productos/${cat.slug}`;
+const nombre = fam ? fam.nombre : cat.nombre;
+const titulo = page.currentPage > 1 ? `${nombre} (página ${page.currentPage})` : nombre;
+const paginas = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+const urlPagina = (n: number) => (n === 1 ? base : `${base}/${n}`);
+const todos = productosDe(cat.slug);
+const familias = (cat.familias ?? [])
+  .map((f) => ({ ...f, total: todos.filter((p) => p.familia === f.slug).length }))
+  .filter((f) => f.total > 0);
+const migas = [
+  { nombre: 'Inicio', href: '/' },
+  { nombre: 'Venta de equipos', href: '/productos' },
+  { nombre: cat.nombre, href: `/productos/${cat.slug}` },
+  ...(fam ? [{ nombre: fam.nombre, href: base }] : []),
+];
+const descBase = fam
+  ? `${fam.nombre} en venta en Lima: ${page.total} modelos con ficha técnica. Cotiza por WhatsApp con Hidrofluid Service.`
+  : `${cat.descripcion} Cotiza por WhatsApp con Hidrofluid Service.`;
+const descripcion = descripcionSeo(page.currentPage > 1 ? `Página ${page.currentPage}. ${descBase}` : descBase);
+const lista = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: nombre,
+  numberOfItems: page.total,
+  itemListElement: page.data.map((p, i) => ({
+    '@type': 'ListItem',
+    position: (page.currentPage - 1) * page.size + i + 1,
+    url: new URL(`/producto/${p.slug}`, Astro.site!).href,
+    name: p.nombre,
+  })),
+};
+---
+
+<Layout title={tituloSeo(titulo)} description={descripcion}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(lista)} />
+  <div class="wrap catalog">
+    <Breadcrumb items={migas} />
+    <header class="catalog-head">
+      <h1 class="catalog-title">{nombre}</h1>
+      <p class="lead">{cat.descripcion}</p>
+    </header>
+
+    <div class="catalog-layout">
+      <aside class="catalog-side" aria-label="Categorías">
+        <h2 class="side-h">Categorías</h2>
+        <ul class="side-list">
+          {
+            categorias.map((c) => (
+              <li>
+                <a class:list={[{ 'is-current': c.slug === cat.slug }]} href={`/productos/${c.slug}`} aria-current={c.slug === cat.slug && !fam ? 'page' : undefined}>
+                  {c.nombre}
+                  <span>{productosDe(c.slug).length}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+
+      <section class="catalog-main" aria-label={`Productos de ${nombre}`}>
+        <div class="toolbar">
+          <p class="result-count"><strong>{page.total}</strong> {page.total === 1 ? 'resultado' : 'resultados'}</p>
+          <label class="sort">
+            <span class="sr-only">Ordenar</span>
+            <select class="input" data-orden>
+              <option value="">Orden predeterminado</option>
+              <option value="az">Nombre: A a Z</option>
+              <option value="za">Nombre: Z a A</option>
+            </select>
+          </label>
+        </div>
+        {
+          familias.length > 1 && (
+            <nav class="chips" aria-label="Tipos" style="padding-bottom: var(--s300)">
+              <a class:list={['fchip', { 'is-on': !fam }]} href={`/productos/${cat.slug}`} aria-current={!fam ? 'page' : undefined}>
+                Todas <span class="fchip-n">{todos.length}</span>
+              </a>
+              {familias.map((f) => (
+                <a class:list={['fchip', { 'is-on': fam?.slug === f.slug }]} href={`/productos/${cat.slug}/tipo/${f.slug}`} aria-current={fam?.slug === f.slug ? 'page' : undefined}>
+                  {f.nombre} <span class="fchip-n">{f.total}</span>
+                </a>
+              ))}
+            </nav>
+          )
+        }
+
+        {
+          page.data.length > 0 ? (
+            <div class="pgrid" data-grid>
+              {page.data.map((p) => <ProductCard p={p} />)}
+            </div>
+          ) : (
+            <div class="empty">
+              <h2 class="h3">Estamos armando este catálogo</h2>
+              <p class="body">Cuéntanos qué equipo necesitas y te enviamos opciones y precios por WhatsApp.</p>
+              <a class="btn btn-wa" href={wa(cat.nombre)} target="_blank" rel="noopener">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+          )
+        }
+
+        {
+          page.lastPage > 1 && (
+            <nav class="pager" aria-label="Paginación">
+              {page.currentPage > 1 && <a href={urlPagina(page.currentPage - 1)} aria-label="Página anterior">‹</a>}
+              {paginas.map((n) => (n === page.currentPage ? <span aria-current="page">{n}</span> : <a href={urlPagina(n)}>{n}</a>))}
+              {page.currentPage < page.lastPage && <a href={urlPagina(page.currentPage + 1)} aria-label="Página siguiente">›</a>}
+            </nav>
+          )
+        }
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Orden por nombre dentro de la página, sin recargar.
+  const grid = document.querySelector<HTMLElement>('[data-grid]');
+  const original = grid ? Array.from(grid.querySelectorAll<HTMLElement>('.pcard')) : [];
+  document.querySelector<HTMLSelectElement>('[data-orden]')?.addEventListener('change', (e) => {
+    const v = (e.target as HTMLSelectElement).value;
+    const lista = v ? [...original].sort((a, b) => (a.dataset.nombre ?? '').localeCompare(b.dataset.nombre ?? '', 'es', { numeric: true })) : original;
+    if (v === 'za') lista.reverse();
+    lista.forEach((c) => grid?.appendChild(c));
+  });
+</script>

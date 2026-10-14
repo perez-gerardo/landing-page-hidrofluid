@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { empresa } from '../data/site';
+---
+
+<Layout title="Política de privacidad | Hidrofluid Service" description={`Cómo ${empresa.nombre} trata los datos personales enviados a través de este sitio.`}>
+  <div class="wrap legal">
+    <span class="eyebrow">Legal</span>
+    <h1 class="h2">Política de privacidad</h1>
+    <!-- PENDIENTE: revisión legal y fecha de publicación -->
+    <p>Última actualización: octubre de 2026.</p>
+    <p>
+      {empresa.nombre}, con RUC {empresa.ruc} y domicilio en {empresa.direccion}, {empresa.distrito}, {empresa.ciudad}, es responsable
+      del tratamiento de los datos personales que nos envías a través de este sitio, conforme a la Ley N.º 29733, Ley de Protección
+      de Datos Personales, y su reglamento.
+    </p>
+    <h2>Qué datos recopilamos</h2>
+    <ul>
+      <li>Nombre, empresa y RUC.</li>
+      <li>Teléfono y correo electrónico.</li>
+      <li>Descripción y fotos del equipo que nos envías.</li>
+    </ul>
+    <h2>Para qué los usamos</h2>
+    <ul>
+      <li>Responder tu solicitud de cotización, visita técnica o alquiler.</li>
+      <li>Coordinar la ejecución del servicio y emitir comprobantes.</li>
+      <li>Darte seguimiento sobre el servicio solicitado.</li>
+    </ul>
+    <p>No vendemos ni cedemos tus datos a terceros. Solo los compartimos con proveedores necesarios para prestar el servicio, como mensajería o correo.</p>
+    <h2>Cuánto tiempo los conservamos</h2>
+    <p>Mientras exista una relación comercial y durante los plazos exigidos por la normativa tributaria y contable.</p>
+    <h2>Tus derechos</h2>
+    <p>
+      Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición escribiendo a
+      <a href={`mailto:${empresa.correo}`}>{empresa.correo}</a>. Si consideras que no atendimos tu solicitud, puedes acudir a la
+      Autoridad Nacional de Protección de Datos Personales.
+    </p>
+    <p><a class="btn btn-primary" href="/">Volver al inicio</a></p>
+  </div>
+</Layout>

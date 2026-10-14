@@ -1,0 +1,55 @@
+---
+// Pie de página sencillo con el logo de Hidrofluid grande.
+import { Image } from 'astro:assets';
+import logoBlanco from '../assets/brand/logo-hidrofluid-blanco-grande.png';
+import Icon from './Icon.astro';
+import { empresa, wa } from '../data/site';
+import { servicios } from '../data/servicios';
+
+const anio = new Date().getFullYear();
+---
+
+<footer class="foot" id="contacto">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="/" aria-label="Hidrofluid Service, ir al inicio">
+        <Image class="foot-logo" src={logoBlanco} alt="Hidrofluid Service SAC" width={360} loading="lazy" />
+      </a>
+      <p>Venta, mantenimiento, fabricación y alquiler de equipos hidráulicos e industriales.</p>
+      <a class="btn btn-wa" href={wa()} target="_blank" rel="noopener"><Icon name="whatsapp" class="ico-sm" /> Escribir por WhatsApp</a>
+      <!-- PENDIENTE: poner las URLs reales en empresa.redes (src/data/site.ts). Mientras estén vacías los botones no llevan a ningún lado. -->
+      <div class="foot-socials">
+        {
+          empresa.redes.map((r) => (
+            <a class="foot-soc" href={r.url || '#'} target={r.url ? '_blank' : undefined} rel={r.url ? 'noopener' : undefined} aria-label={r.url ? r.nombre : `${r.nombre} (próximamente)`} title={r.url ? r.nombre : 'Próximamente'}>
+              <Icon name={r.icono} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <address class="foot-col">
+      <h2 class="foot-h">Contacto</h2>
+      <span>{empresa.direccion}</span>
+      <span>{empresa.distrito}, {empresa.ciudad}</span>
+      {empresa.telefonos.map((t) => <a href={`tel:${t.tel}`}>{t.texto}</a>)}
+      <a href={`mailto:${empresa.correo}`}>{empresa.correo}</a>
+    </address>
+
+    <nav class="foot-col" aria-label="Enlaces del pie">
+      <h2 class="foot-h">Enlaces</h2>
+      <a href="/productos">Venta de equipos</a>
+      {servicios.map((s) => <a href={`/servicios/${s.slug}`}>{s.menu}</a>)}
+      <a href="/#nosotros">Nosotros</a>
+      <a href="/#ubicacion">Ubicación</a>
+    </nav>
+  </div>
+
+  <div class="foot-bottom">
+    <div class="wrap foot-bottom-inner">
+      <span>© {anio} {empresa.nombre} · RUC {empresa.ruc}</span>
+      <a href="/privacidad">Política de privacidad</a>
+    </div>
+  </div>
+</footer>
