@@ -2,9 +2,11 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Clientes from '../components/Clientes.astro';
+import EquiposTaller from '../components/EquiposTaller.astro';
+import tablero from '../assets/fotos/nosotros-tablero.webp';
+import equipo from '../assets/fotos/nosotros-equipo.webp';
 import vitrina from '../assets/hero/vitrina-hidrofluid.jpg';
 import { fotoAmbiente, fotoServicio } from '../data/fotos';
-import { categorias, productosDe } from '../data/catalogo';
 import { schema } from '../data/schema';
 import { empresa, seo, wa, confianza, serviciosHome, nosotros } from '../data/site';
 
@@ -66,36 +68,18 @@ const foto = (n: string) => fotoServicio(n) ?? fotoAmbiente(n);
     </div>
   </section>
 
-  <!-- Venta de equipos -->
-  <section class="section section-alt" id="venta" aria-labelledby="venta-t">
-    <div class="wrap">
-      <div class="rent-head reveal">
-        <div class="section-head">
-          <span class="eyebrow">Venta de equipos</span>
-          <h2 class="h2" id="venta-t">Equipos para tu taller</h2>
-        </div>
-        <a class="btn btn-dark" href="/productos">Ver todo el catálogo</a>
-      </div>
-      <ul class="tiles">
-        {
-          categorias.map((c) => (
-            <li class="reveal">
-              <a class="tile" href={`/productos/${c.slug}`}>
-                <span class="tile-name">{c.nombre}</span>
-                <span class="tile-n">{productosDe(c.slug).length > 0 ? `${productosDe(c.slug).length} equipos` : 'Consultar'}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
+  <EquiposTaller />
 
   <Clientes />
 
   <!-- Nosotros -->
-  <section class="section" id="nosotros" aria-labelledby="nosotros-t">
+  <section class="section nosotros" id="nosotros" aria-labelledby="nosotros-t">
     <div class="wrap about">
+      <div class="about-media reveal">
+        <Image class="about-img about-img-a" src={tablero} alt="Técnico de Hidrofluid revisando un tablero eléctrico industrial" widths={[480, 720, 960]} sizes="(max-width: 900px) 90vw, 45vw" />
+        <Image class="about-img about-img-b" src={equipo} alt="Técnicos de Hidrofluid instalando un equipo en una planta" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 30vw" />
+        <div class="about-badge"><strong>+10</strong><span>años en la industria</span></div>
+      </div>
       <div class="about-copy reveal">
         <span class="eyebrow">Nosotros</span>
         <h2 class="h2" id="nosotros-t">Más de 10 años manteniendo la industria en marcha</h2>
@@ -103,10 +87,10 @@ const foto = (n: string) => fotoServicio(n) ?? fotoAmbiente(n);
         <ul class="values">
           {nosotros.valores.map((v) => <li>{v}</li>)}
         </ul>
-      </div>
-      <div class="about-cards reveal">
-        <div class="about-card"><h3>Misión</h3><p>{nosotros.mision}</p></div>
-        <div class="about-card"><h3>Visión</h3><p>{nosotros.vision}</p></div>
+        <div class="about-cards">
+          <div class="about-card"><h3>Misión</h3><p>{nosotros.mision}</p></div>
+          <div class="about-card"><h3>Visión</h3><p>{nosotros.vision}</p></div>
+        </div>
       </div>
     </div>
   </section>

@@ -1,0 +1,70 @@
+---
+// "Equipos para tu taller": carrusel de equipos destacados + categorías con foto.
+import { Image } from 'astro:assets';
+import ProductCard from './ProductCard.astro';
+import { fotoProducto } from '../data/fotos';
+import { categorias, productosDe, type Producto } from '../data/catalogo';
+
+// Cuántos equipos destacados se toman de cada categoría (solo los que tienen foto).
+const destacar: Record<string, number> = {
+  'gatas-de-taller': 3,
+  'prensas-hidraulicas': 2,
+  elevadores: 2,
+  hidrolavadoras: 2,
+  'pistolas-de-impacto': 2,
+  'plumas-hidraulicas': 1,
+  'compresoras-de-aire': 1,
+  'herramientas-de-torque': 1,
+  'engrase-y-lubricacion': 1,
+};
+const conFoto = (slug: string) => productosDe(slug).filter((p) => fotoProducto(p.foto));
+const listas = Object.entries(destacar).map(([slug, n]) => conFoto(slug).slice(0, n));
+// Se intercalan las categorías para que el carrusel no muestre varias gatas seguidas.
+const orden: Producto[] = Array.from({ length: Math.max(...listas.map((l) => l.length)) }, (_, i) => listas.map((l) => l[i])).flat().filter(Boolean);
+const tiles = categorias.map((c) => ({ c, n: productosDe(c.slug).length, foto: fotoProducto(conFoto(c.slug)[0]?.foto) }));
+---
+
+<section class="section section-alt equipos" id="venta" aria-labelledby="venta-t">
+  <div class="wrap">
+    <div class="rent-head reveal">
+      <div class="section-head">
+        <span class="eyebrow">Venta de equipos</span>
+        <h2 class="h2" id="venta-t">Equipos para tu taller</h2>
+        <p class="lead">Gatas, prensas, elevadores, hidrolavadoras y más. Te asesoramos y cotizamos por WhatsApp.</p>
+      </div>
+      <a class="btn btn-dark" href="/productos">Ver todo el catálogo</a>
+    </div>
+  </div>
+
+  <div class="carrusel" data-carrusel>
+    <div class="wrap carrusel-bar">
+      <h3 class="carrusel-t">Destacados</h3>
+      <div class="carrusel-ctl">
+        <button type="button" class="carrusel-btn" data-dir="-1" aria-label="Anterior">&#8592;</button>
+        <button type="button" class="carrusel-btn" data-dir="1" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+    <ul class="carrusel-track" tabindex="0" aria-label="Equipos destacados">
+      {orden.map((p) => <li class="carrusel-item"><ProductCard p={p} /></li>)}
+    </ul>
+  </div>
+
+  <div class="wrap">
+    <h3 class="carrusel-t cat-t">Explora por categoría</h3>
+    <ul class="cats">
+      {
+        tiles.map(({ c, n, foto }) => (
+          <li>
+            <a class="cat" href={`/productos/${c.slug}`}>
+              <span class="cat-img" aria-hidden="true">
+                {foto && <Image src={foto.img} alt="" widths={[240, 400]} sizes="(max-width: 720px) 45vw, 220px" loading="lazy" decoding="async" />}
+              </span>
+              <span class="cat-name">{c.nombre}</span>
+              <span class="cat-n">{n > 0 ? `${n} equipos` : 'Consultar'}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

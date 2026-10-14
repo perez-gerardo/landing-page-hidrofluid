@@ -33,6 +33,22 @@ function init() {
     reveals.forEach(function (el) { revealIO.observe(el); });
   }
 
+  /* ---------- Carrusel de equipos ---------- */
+  document.querySelectorAll('[data-carrusel]').forEach(function (car) {
+    var track = car.querySelector('.carrusel-track');
+    var prev = car.querySelector('[data-dir="-1"]');
+    var next = car.querySelector('[data-dir="1"]');
+    function estado() {
+      prev.disabled = track.scrollLeft < 8;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+    }
+    function mover(d) { track.scrollBy({ left: d * Math.max(track.clientWidth * 0.8, 280), behavior: reduceMotion ? 'auto' : 'smooth' }); }
+    prev.addEventListener('click', function () { mover(-1); });
+    next.addEventListener('click', function () { mover(1); });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(estado); }, { passive: true });
+    estado();
+  });
+
   /* ---------- Sección actual en la navegación ---------- */
   var navLinks = document.body.classList.contains('is-home') ? document.querySelectorAll('.main-nav > a.nav-item') : [];
   if ('IntersectionObserver' in window) {
