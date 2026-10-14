@@ -1,7 +1,0 @@
-Resumen de Coches y mesas de trabajo. Total que faltan: 0
-
-== Coches abiertos y mesas ==
-Completo: todos sus productos ya tienen foto.
-
-== Coches cerrados ==
-Completo: todos sus productos ya tienen foto.
