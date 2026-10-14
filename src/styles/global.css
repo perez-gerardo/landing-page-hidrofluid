@@ -658,3 +658,23 @@ a.foot-soc:hover { background: var(--teal-d); color: #ffffff; transform: transla
 @media (max-width: 720px) { .cliente { height: 72px; min-width: 150px; padding: 0 var(--s300); } .cliente img { height: 38px; } .cliente-nombre { font-size: 18px; } .clientes-lista { gap: var(--s200); } }
 /* Rendimiento: no pintar secciones fuera de pantalla */
 #servicios, #nosotros, #ubicacion { content-visibility: auto; contain-intrinsic-size: auto 800px; }
+
+/* Categorías en carrusel */
+.carrusel-cats { margin-top: var(--s200); }
+.cat-item { flex: 0 0 min(210px, 56vw); }
+.cat-item .cat { width: 100%; }
+
+/* Portada: showroom oscuro con equipos a la derecha */
+.hero-vitrina { background: #05070b; min-height: min(80vh, 720px); align-items: center; }
+.vitrina-img { object-position: 78% 70%; }
+.vitrina-veil { background: linear-gradient(90deg, rgba(5,7,11,.94) 0%, rgba(5,7,11,.78) 30%, rgba(5,7,11,.15) 58%, rgba(5,7,11,0) 70%), linear-gradient(0deg, rgba(5,7,11,.55) 0%, rgba(5,7,11,0) 28%); }
+.vitrina-inner { padding-top: var(--s800); padding-bottom: var(--s800); }
+
+.hero-vitrina .eyebrow { color: var(--teal); }
+@media (max-width: 900px) {
+  .hero-vitrina { min-height: 0; align-items: stretch; }
+  .vitrina-img { object-position: 82% 60%; aspect-ratio: 4 / 3; }
+}
+.about-img-a { object-position: 50% 30%; }
+@media (max-width: 900px) { .about-img-a { aspect-ratio: 5 / 4; width: 88%; } .about-img-b { width: 52%; } .about-media { padding-bottom: var(--s500); } }
+.about-img { height: auto; }

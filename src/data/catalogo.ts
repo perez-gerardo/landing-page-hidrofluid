@@ -202,13 +202,6 @@ export const categorias: Categoria[] = [
     descripcion: 'Hidrolavadoras industriales a presión de agua fría y caliente, Kärcher y multimarca, con repuestos y servicio técnico.',
     icono: 'spray',
   },
-  {
-    slug: 'epp-y-seguridad',
-    nombre: 'EPP y seguridad vial',
-    grupo: 'limpieza',
-    descripcion: 'Protección de cráneo, visual, auditiva, respiratoria, guantes, conos, cintas reflectivas y señalización.',
-    icono: 'shield',
-  },
 ];
 
 // PENDIENTE: validar cada ficha con el taller (capacidades, marca, código y precio).

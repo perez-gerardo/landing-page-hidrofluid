@@ -3,9 +3,9 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Clientes from '../components/Clientes.astro';
 import EquiposTaller from '../components/EquiposTaller.astro';
-import tablero from '../assets/fotos/nosotros-tablero.webp';
-import equipo from '../assets/fotos/nosotros-equipo.webp';
-import vitrina from '../assets/hero/vitrina-hidrofluid.jpg';
+import tablero from '../assets/fotos/nosotros-taller.jpg';
+import equipo from '../assets/fotos/nosotros-inspeccion.jpg';
+import vitrina from '../assets/hero/showroom.webp';
 import { fotoAmbiente, fotoServicio } from '../data/fotos';
 import { schema } from '../data/schema';
 import { empresa, seo, wa, confianza, serviciosHome, nosotros } from '../data/site';
@@ -19,7 +19,7 @@ const foto = (n: string) => fotoServicio(n) ?? fotoAmbiente(n);
 
   <!-- Portada -->
   <section class="hero-vitrina on-dark" id="inicio">
-    <Image class="vitrina-img" src={vitrina} alt="Prensa hidráulica, estoca, gatas y coche porta herramientas de Hidrofluid" widths={[768, 1280, 1600, 2400]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <Image class="vitrina-img" src={vitrina} alt="Elevador de tijera, prensa hidráulica, pluma, gatas e hidrolavadora en el showroom de Hidrofluid" widths={[768, 1280, 1536]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="vitrina-veil" aria-hidden="true"></div>
     <div class="wrap vitrina-inner">
       <div class="vitrina-copy reveal">
@@ -76,8 +76,8 @@ const foto = (n: string) => fotoServicio(n) ?? fotoAmbiente(n);
   <section class="section nosotros" id="nosotros" aria-labelledby="nosotros-t">
     <div class="wrap about">
       <div class="about-media reveal">
-        <Image class="about-img about-img-a" src={tablero} alt="Técnico de Hidrofluid revisando un tablero eléctrico industrial" widths={[480, 720, 960]} sizes="(max-width: 900px) 90vw, 45vw" />
-        <Image class="about-img about-img-b" src={equipo} alt="Técnicos de Hidrofluid instalando un equipo en una planta" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 30vw" />
+        <Image class="about-img about-img-a" src={tablero} alt="Técnico de Hidrofluid armando una gata hidráulica en el taller" widths={[480, 720, 960]} sizes="(max-width: 900px) 90vw, 45vw" />
+        <Image class="about-img about-img-b" src={equipo} alt="Ingenieros de mantenimiento inspeccionando una prensa hidráulica en planta" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 30vw" />
         <div class="about-badge"><strong>+10</strong><span>años en la industria</span></div>
       </div>
       <div class="about-copy reveal">

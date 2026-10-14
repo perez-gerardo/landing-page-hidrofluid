@@ -49,15 +49,21 @@ const tiles = categorias.map((c) => ({ c, n: productosDe(c.slug).length, foto: f
     </ul>
   </div>
 
-  <div class="wrap">
-    <h3 class="carrusel-t cat-t">Explora por categoría</h3>
-    <ul class="cats">
+  <div class="carrusel carrusel-cats" data-carrusel>
+    <div class="wrap carrusel-bar">
+      <h3 class="carrusel-t">Explora por categoría</h3>
+      <div class="carrusel-ctl">
+        <button type="button" class="carrusel-btn" data-dir="-1" aria-label="Anterior">&#8592;</button>
+        <button type="button" class="carrusel-btn" data-dir="1" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+    <ul class="carrusel-track" tabindex="0" aria-label="Categorías de equipos">
       {
         tiles.map(({ c, n, foto }) => (
-          <li>
+          <li class="carrusel-item cat-item">
             <a class="cat" href={`/productos/${c.slug}`}>
               <span class="cat-img" aria-hidden="true">
-                {foto && <Image src={foto.img} alt="" widths={[240, 400]} sizes="(max-width: 720px) 45vw, 220px" loading="lazy" decoding="async" />}
+                {foto && <Image src={foto.img} alt="" widths={[240, 400]} sizes="220px" loading="lazy" decoding="async" />}
               </span>
               <span class="cat-name">{c.nombre}</span>
               <span class="cat-n">{n > 0 ? `${n} equipos` : 'Consultar'}</span>
