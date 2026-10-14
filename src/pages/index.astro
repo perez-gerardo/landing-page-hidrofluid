@@ -3,8 +3,8 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Clientes from '../components/Clientes.astro';
 import EquiposTaller from '../components/EquiposTaller.astro';
-import tablero from '../assets/fotos/nosotros-taller.jpg';
-import equipo from '../assets/fotos/nosotros-inspeccion.jpg';
+import tablero from '../assets/fotos/nosotros-manos.jpg';
+import equipo from '../assets/fotos/nosotros-planta.jpg';
 import vitrina from '../assets/hero/showroom.webp';
 import { fotoAmbiente, fotoServicio } from '../data/fotos';
 import { schema } from '../data/schema';
@@ -76,17 +76,14 @@ const foto = (n: string) => fotoServicio(n) ?? fotoAmbiente(n);
   <section class="section nosotros" id="nosotros" aria-labelledby="nosotros-t">
     <div class="wrap about">
       <div class="about-media reveal">
-        <Image class="about-img about-img-a" src={tablero} alt="Técnico de Hidrofluid armando una gata hidráulica en el taller" widths={[480, 720, 960]} sizes="(max-width: 900px) 90vw, 45vw" />
-        <Image class="about-img about-img-b" src={equipo} alt="Ingenieros de mantenimiento inspeccionando una prensa hidráulica en planta" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 30vw" />
+        <Image class="about-img about-img-a" src={tablero} alt="Manos de un técnico ajustando una prensa hidráulica en el taller" widths={[480, 720, 960]} sizes="(max-width: 900px) 90vw, 45vw" />
+        <Image class="about-img about-img-b" src={equipo} alt="Técnicos con casco y chaleco caminando por una planta industrial" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 30vw" />
         <div class="about-badge"><strong>+10</strong><span>años en la industria</span></div>
       </div>
       <div class="about-copy reveal">
         <span class="eyebrow">Nosotros</span>
         <h2 class="h2" id="nosotros-t">Más de 10 años manteniendo la industria en marcha</h2>
         <p class="lead">{nosotros.resumen}</p>
-        <ul class="values">
-          {nosotros.valores.map((v) => <li>{v}</li>)}
-        </ul>
         <div class="about-cards">
           <div class="about-card"><h3>Misión</h3><p>{nosotros.mision}</p></div>
           <div class="about-card"><h3>Visión</h3><p>{nosotros.vision}</p></div>
