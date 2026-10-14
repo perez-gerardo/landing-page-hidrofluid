@@ -19,3 +19,4 @@ yarn-debug.log*
 
 # material de trabajo pesado que no hace falta en el repo
 media/
+.vercel
