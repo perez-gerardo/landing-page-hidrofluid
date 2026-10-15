@@ -753,3 +753,4 @@ a.foot-soc:hover { background: var(--teal-d); color: #ffffff; transform: transla
   .hero-dot-txt { display: none; }
 }
 .hero-slide:not(:first-child) { object-position: 65% 20%; }
+.hero-slide:first-child { object-position: 85% 55%; }

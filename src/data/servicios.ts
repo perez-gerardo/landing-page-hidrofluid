@@ -50,7 +50,7 @@ export const servicios: Servicio[] = [
         resumen: 'Mantenimiento de hidrolavadoras industriales de agua fría y de agua caliente, Kärcher y multimarca.',
         equipos: [
           { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.', foto: 'srv-hidrolavadoras' },
-          { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.', foto: 'acc-hidrolavado-agua-caliente' },
+          { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.', foto: 'ia-hidro-caliente' },
         ],
       },
       {
@@ -86,9 +86,9 @@ export const servicios: Servicio[] = [
         resumen: 'Mantenimiento de pistolas de impacto de todas las capacidades.',
         equipos: [
           { nombre: 'Pistola de impacto neumática', foto: 'ia-pistola-neumatica' },
-          { nombre: 'Pistola de impacto eléctrica', foto: 'acc-pistola-electrica' },
-          { nombre: 'Pistola de impacto inalámbrica', foto: 'srv-pistolas' },
-          { nombre: 'Pistola de impacto de alto torque', detalle: 'Encastre de 1", cañón corto y largo.', foto: 'pistola-neumatica-1-4800-nm-canon-largo' },
+          { nombre: 'Pistola de impacto eléctrica', foto: 'ia-pistola-electrica' },
+          { nombre: 'Pistola de impacto inalámbrica', foto: 'ia-pistola-inalambrica' },
+          { nombre: 'Pistola de impacto de alto torque', detalle: 'Encastre de 1", cañón corto y largo.', foto: 'ia-alto-torque' },
         ],
       },
       {
@@ -100,9 +100,9 @@ export const servicios: Servicio[] = [
         equipos: [
           { nombre: 'Torquímetros de click', detalle: 'Calibración y verificación.', foto: 'ia-torquimetro-click' },
           { nombre: 'Torquímetros digitales', detalle: 'Calibración y verificación.', foto: 'ia-torquimetro-digital' },
-          { nombre: 'Torquímetros de dial', detalle: 'Calibración y verificación.', foto: 'torquimetro-de-dial' },
+          { nombre: 'Torquímetros de dial', detalle: 'Calibración y verificación.', foto: 'ia-torq-dial' },
           { nombre: 'Llaves de torque hidráulicas', detalle: 'Mantenimiento y calibración.', foto: 'ia-llave-torque-hidraulica' },
-          { nombre: 'Llaves de torque eléctricas y a batería', detalle: 'Mantenimiento y calibración.', foto: 'llave-de-torque-electrica' },
+          { nombre: 'Llaves de torque eléctricas y a batería', detalle: 'Mantenimiento y calibración.', foto: 'ia-torq-electrica' },
         ],
       },
     ],
@@ -128,9 +128,9 @@ export const servicios: Servicio[] = [
         icono: 'crane',
         resumen: 'Fabricamos equipos para taller según tu necesidad.',
         equipos: [
-          { nombre: 'Elevadores', foto: 'acc-fab-elevadores' },
-          { nombre: 'Gatas', foto: 'acc-fab-gatas' },
-          { nombre: 'Prensas', foto: 'acc-fab-prensas' },
+          { nombre: 'Elevadores', foto: 'ia-fab-elevadores' },
+          { nombre: 'Gatas', foto: 'ia-fab-gatas' },
+          { nombre: 'Prensas', foto: 'ia-fab-prensas' },
           { nombre: 'Soportes para reparación de motor', foto: 'fab-soporte-reparacion-motor' },
         ],
       },
@@ -140,10 +140,10 @@ export const servicios: Servicio[] = [
         icono: 'gear',
         resumen: 'Fabricación de piezas y accesorios hidráulicos según plano o muestra.',
         equipos: [
-          { nombre: 'Acoples', foto: 'acoples' },
-          { nombre: 'Retenes', foto: 'retenes' },
-          { nombre: 'Sellos hidráulicos', foto: 'sellos-hidraulicos' },
-          { nombre: 'Llaves hidráulicas', foto: 'llaves-hidraulicas' },
+          { nombre: 'Acoples', foto: 'ia-acoples' },
+          { nombre: 'Retenes', foto: 'ia-retenes' },
+          { nombre: 'Sellos hidráulicos', foto: 'ia-sellos' },
+          { nombre: 'Llaves hidráulicas', foto: 'ia-llaves-hidraulicas' },
           { nombre: 'Mangueras hidráulicas', foto: 'ia-mangueras' },
         ],
       },
