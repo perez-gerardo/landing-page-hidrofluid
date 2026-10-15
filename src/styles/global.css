@@ -679,3 +679,7 @@ a.foot-soc:hover { background: var(--teal-d); color: #ffffff; transform: transla
 @media (max-width: 900px) { .about-img-a { aspect-ratio: 5 / 4; width: 88%; } .about-img-b { width: 52%; } .about-media { padding-bottom: var(--s500); } }
 .about-img { height: auto; }
 @media (min-width: 1000px) { .svc-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.cliente.claro { background: #ffffff; border-color: #ffffff; }
+.cliente.claro img { height: 40px; }
+.cliente img[src*="tracto"] { height: 72px; }
+.cliente.claro img[src*="transportes"] { height: 60px; }

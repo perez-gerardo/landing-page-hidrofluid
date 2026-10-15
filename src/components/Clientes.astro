@@ -18,7 +18,7 @@ const logo = (n: string | null) => (n ? logos[`../assets/clientes/${n}.png`]?.de
           {clientes.map((c) => {
             const l = logo(c.logo);
             return (
-              <li class="cliente" role={copia === 0 ? 'listitem' : undefined}>
+              <li class:list={['cliente', { claro: 'claro' in c }]} role={copia === 0 ? 'listitem' : undefined}>
                 {l ? (
                   <Image src={l} alt={copia === 0 ? ('alt' in c ? c.alt : c.nombre) : ''} height={64} densities={[1, 2]} loading="lazy" />
                 ) : (
