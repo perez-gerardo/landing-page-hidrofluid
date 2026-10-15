@@ -36,6 +36,35 @@ function init() {
 
   initBuscador();
 
+  /* ---------- Portada: cambia de imagen sola ---------- */
+  var heroSlides = document.querySelectorAll('.hero-slide');
+  var heroDots = document.querySelectorAll('.hero-dot');
+  if (heroSlides.length > 1) {
+    var actual = 0;
+    var DURACION = 6000;
+    var timer = null;
+    function mostrar(n) {
+      heroSlides[actual].classList.remove('is-on');
+      heroDots[actual] && heroDots[actual].classList.remove('is-on');
+      actual = (n + heroSlides.length) % heroSlides.length;
+      var img = heroSlides[actual];
+      if (img.loading === 'lazy') img.loading = 'eager';
+      img.classList.add('is-on');
+      heroDots[actual] && heroDots[actual].classList.add('is-on');
+    }
+    function iniciar() { if (!reduceMotion && !timer) timer = setInterval(function () { mostrar(actual + 1); }, DURACION); }
+    function parar() { clearInterval(timer); timer = null; }
+    heroDots.forEach(function (d, i) {
+      d.addEventListener('mouseenter', function () { parar(); mostrar(i); });
+      d.addEventListener('focus', function () { parar(); mostrar(i); });
+      d.addEventListener('mouseleave', iniciar);
+    });
+    // precarga las siguientes cuando el navegador está libre
+    setTimeout(function () { heroSlides.forEach(function (im) { im.loading = 'eager'; }); }, 2500);
+    document.addEventListener('visibilitychange', function () { document.hidden ? parar() : iniciar(); });
+    iniciar();
+  }
+
   /* ---------- Carrusel de equipos ---------- */
   document.querySelectorAll('[data-carrusel]').forEach(function (car) {
     var track = car.querySelector('.carrusel-track');

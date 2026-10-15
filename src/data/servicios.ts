@@ -49,7 +49,7 @@ export const servicios: Servicio[] = [
         icono: 'drop',
         resumen: 'Mantenimiento de hidrolavadoras industriales de agua fría y de agua caliente, Kärcher y multimarca.',
         equipos: [
-          { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.', foto: 'acc-hidrolavado-agua-fria' },
+          { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.', foto: 'srv-hidrolavadoras' },
           { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.', foto: 'acc-hidrolavado-agua-caliente' },
         ],
       },
@@ -74,8 +74,8 @@ export const servicios: Servicio[] = [
         equipos: [
           { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'acc-gata-botella' },
           { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'acc-gata-lagarto' },
-          { nombre: 'Gata de transmisión', foto: 'acc-gata-transmision' },
-          { nombre: 'Prensa hidráulica', foto: 'acc-prensa' },
+          { nombre: 'Gata de transmisión', foto: 'srv-hidraulicos' },
+          { nombre: 'Prensa hidráulica', foto: 'srv-fabricacion' },
           { nombre: 'Pluma hidráulica', foto: 'acc-pluma' },
         ],
       },
@@ -87,7 +87,7 @@ export const servicios: Servicio[] = [
         equipos: [
           { nombre: 'Pistola de impacto neumática', foto: 'acc-pistola-neumatica' },
           { nombre: 'Pistola de impacto eléctrica', foto: 'acc-pistola-electrica' },
-          { nombre: 'Pistola de impacto inalámbrica', foto: 'pistola-inalambrica-3-4-1980-nm' },
+          { nombre: 'Pistola de impacto inalámbrica', foto: 'srv-pistolas' },
           { nombre: 'Pistola de impacto de alto torque', detalle: 'Encastre de 1", cañón corto y largo.', foto: 'pistola-neumatica-1-4800-nm-canon-largo' },
         ],
       },
