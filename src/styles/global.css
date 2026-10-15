@@ -683,3 +683,5 @@ a.foot-soc:hover { background: var(--teal-d); color: #ffffff; transform: transla
 .cliente.claro img { height: 40px; }
 .cliente img[src*="tracto"] { height: 72px; }
 .cliente.claro img[src*="transportes"] { height: 60px; }
+.svc-item-media img { padding: var(--s200); }
+.svc-item-media.is-foto img { object-fit: cover; padding: 0; }

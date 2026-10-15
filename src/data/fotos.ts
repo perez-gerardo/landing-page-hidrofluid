@@ -33,3 +33,14 @@ export function fotoProducto(n?: string): { img: ImageMetadata; blanco: boolean 
   if (fotos[n]) return { img: fotos[n], blanco: false };
   return null;
 }
+
+/** Foto de una tarjeta de servicio: primero src/assets/servicios, luego fotos del taller,
+ *  luego la foto de catálogo (fondo blanco) y por último las de ambiente. */
+export function fotoEquipo(n?: string): { img: ImageMetadata; blanco: boolean } | null {
+  if (!n) return null;
+  if (fotosServicios[n]) return { img: fotosServicios[n], blanco: false };
+  if (fotos[n]) return { img: fotos[n], blanco: false };
+  if (fotosCatalogo[n]) return { img: fotosCatalogo[n], blanco: true };
+  if (fotosAmbiente[n]) return { img: fotosAmbiente[n], blanco: false };
+  return null;
+}

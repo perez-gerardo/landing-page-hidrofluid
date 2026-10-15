@@ -7,7 +7,7 @@ import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { servicios, type Servicio } from '../../data/servicios';
-import { fotoServicio } from '../../data/fotos';
+import { fotoEquipo } from '../../data/fotos';
 import { empresa, wa } from '../../data/site';
 import { titulo, descripcion } from '../../data/seo';
 
@@ -81,12 +81,12 @@ const ld = {
 
           <div class="svc-items">
             {g.equipos.map((e) => {
-              const f = fotoServicio(e.foto);
+              const f = fotoEquipo(e.foto);
               return (
                 <article class="svc-item">
-                  <div class="svc-item-media">
+                  <div class:list={['svc-item-media', { 'is-foto': f && !f.blanco }]}>
                     {f ? (
-                      <Image src={f} alt={`${e.nombre}, ${s.menu.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 720px) 100vw, 320px" />
+                      <Image src={f.img} alt={`${e.nombre}, ${s.menu.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 720px) 100vw, 320px" />
                     ) : (
                       <span class="svc-item-ph" role="img" aria-label={`Foto de ${e.nombre} en preparación`}>
                         <span>Foto en preparación</span>

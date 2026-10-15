@@ -38,7 +38,7 @@ export const servicios: Servicio[] = [
     slug: 'mantenimiento-preventivo-y-correctivo',
     menu: 'Mantenimiento preventivo y correctivo',
     titulo: 'Mantenimiento preventivo y correctivo',
-    bajada: 'Equipos hidráulicos, de alta presión, de izaje y eléctricos',
+    bajada: 'Equipos hidráulicos, de alta presión, de izaje y torquímetros',
     intro:
       'Diagnosticamos, reparamos y damos mantenimiento a tus equipos en nuestro taller de Santa Anita o directamente en tu planta. Trabajamos con repuestos adecuados, probamos cada equipo antes de entregarlo y dejamos informe técnico con garantía por escrito.',
     icono: 'wrench',
@@ -49,8 +49,8 @@ export const servicios: Servicio[] = [
         icono: 'drop',
         resumen: 'Mantenimiento de hidrolavadoras industriales de agua fría y de agua caliente, Kärcher y multimarca.',
         equipos: [
-          { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.' },
-          { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.' },
+          { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.', foto: 'hidrolavadora-agua-fria' },
+          { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.', foto: 'hidrolavadora-agua-caliente' },
         ],
       },
       {
@@ -59,11 +59,11 @@ export const servicios: Servicio[] = [
         icono: 'crane',
         resumen: 'Mantenimiento de estocas, transpaletas manuales y eléctricas, montacargas y elevadores industriales.',
         equipos: [
-          { nombre: 'Estocas', detalle: 'Apiladores hidráulicos manuales.' },
-          { nombre: 'Transpaleta manual' },
-          { nombre: 'Transpaleta eléctrica' },
-          { nombre: 'Montacargas' },
-          { nombre: 'Elevadores industriales' },
+          { nombre: 'Estocas', detalle: 'Apiladores hidráulicos manuales.', foto: 'apilador-hidraulico-manual' },
+          { nombre: 'Transpaleta manual', foto: 'transpaleta-manual' },
+          { nombre: 'Transpaleta eléctrica', foto: 'srv-montacargas' },
+          { nombre: 'Montacargas', foto: 'montacargas' },
+          { nombre: 'Elevadores industriales', foto: 'elevador-de-tijera' },
         ],
       },
       {
@@ -72,12 +72,12 @@ export const servicios: Servicio[] = [
         icono: 'gear',
         resumen: 'Reparación y mantenimiento de gatas de distintos tipos y tonelajes, prensas y plumas hidráulicas.',
         equipos: [
-          { nombre: 'Gata botella', detalle: 'Distintos tonelajes.' },
-          { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.' },
-          { nombre: 'Gata de transmisión' },
-          { nombre: 'Prensa hidráulica' },
-          { nombre: 'Pluma hidráulica' },
-          { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'soporte-de-motor' },
+          { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'gata-botella-10-ton' },
+          { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'gata-lagarto-3-ton' },
+          { nombre: 'Gata de transmisión', foto: 'gata-transmision-taller' },
+          { nombre: 'Prensa hidráulica', foto: 'prensa-hidraulica-de-taller' },
+          { nombre: 'Pluma hidráulica', foto: 'pluma-hidraulica-5-ton' },
+          { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'soportes-reparacion-motor' },
         ],
       },
       {
@@ -85,19 +85,24 @@ export const servicios: Servicio[] = [
         titulo: 'Pistolas de impacto',
         icono: 'wrench',
         resumen: 'Mantenimiento de pistolas de impacto de todas las capacidades.',
-        equipos: [{ nombre: 'Pistola de impacto neumática' }, { nombre: 'Pistola de impacto eléctrica' }, { nombre: 'Pistola de impacto inalámbrica' }],
+        equipos: [
+          { nombre: 'Pistola de impacto neumática', foto: 'llave-de-impacto-neumatica' },
+          { nombre: 'Pistola de impacto eléctrica', foto: 'pistola-inalambrica-1-2500-nm' },
+          { nombre: 'Pistola de impacto inalámbrica', foto: 'pistola-inalambrica-3-4-1980-nm' },
+        ],
       },
       {
-        id: 'electricos',
-        titulo: 'Motores y equipos eléctricos',
-        icono: 'engine',
-        resumen: 'Rebobinado de motores, motorreductores, mantenimiento de tableros y compresores, y calibración de torquímetros.',
+        id: 'torquimetros',
+        titulo: 'Mantenimiento y calibración de torquímetros',
+        icono: 'wrench',
+        resumen:
+          'Calibración, verificación y mantenimiento de torquímetros y herramientas de torque, para que cada ajuste se haga con el valor correcto.',
         equipos: [
-          { nombre: 'Motores eléctricos', detalle: 'Diagnóstico y rebobinado.' },
-          { nombre: 'Motorreductores' },
-          { nombre: 'Tableros eléctricos', detalle: 'Megado, rotulado y diagramas unifilares.' },
-          { nombre: 'Compresores' },
-          { nombre: 'Calibración de torquímetros', detalle: 'Calibración y verificación de torquímetros.' },
+          { nombre: 'Torquímetros de click', detalle: 'Calibración y verificación.', foto: 'torquimetro-de-trinquete' },
+          { nombre: 'Torquímetros digitales', detalle: 'Calibración y verificación.', foto: 'torquimetro-digital' },
+          { nombre: 'Torquímetros de dial', detalle: 'Calibración y verificación.', foto: 'torquimetro-de-dial' },
+          { nombre: 'Llaves de torque hidráulicas', detalle: 'Mantenimiento y calibración.', foto: 'llave-de-torque-con-reaccion' },
+          { nombre: 'Llaves de torque eléctricas y a batería', detalle: 'Mantenimiento y calibración.', foto: 'llave-de-torque-electrica' },
         ],
       },
     ],
@@ -105,7 +110,7 @@ export const servicios: Servicio[] = [
     seo: {
       titulo: 'Mantenimiento de equipos hidráulicos en Lima',
       descripcion:
-        'Mantenimiento preventivo y correctivo de hidrolavadoras industriales de agua fría y caliente, estocas, transpaletas manuales y eléctricas, gatas, prensas y pistolas de impacto, y calibración de torquímetros. Taller en Santa Anita y atención in situ.',
+        'Mantenimiento preventivo y correctivo de hidrolavadoras industriales de agua fría y caliente, estocas, transpaletas manuales y eléctricas, gatas, prensas, pistolas de impacto y torquímetros, con calibración de torquímetros. Taller en Santa Anita y atención in situ.',
     },
   },
   {
@@ -119,24 +124,35 @@ export const servicios: Servicio[] = [
     grupos: [
       {
         id: 'equipos',
-        titulo: 'Equipos hidráulicos',
+        titulo: 'Fabricación de equipos para taller',
         icono: 'crane',
-        resumen: 'Fabricación de equipos hidráulicos de taller.',
-        equipos: [{ nombre: 'Elevadores' }, { nombre: 'Gatas' }, { nombre: 'Prensas' }],
+        resumen: 'Fabricamos equipos para taller según tu necesidad.',
+        equipos: [
+          { nombre: 'Elevadores', foto: 'elevador-de-rampas' },
+          { nombre: 'Gatas', foto: 'surtido-de-gatas' },
+          { nombre: 'Prensas', foto: 'prensa-hidraulica-60-ton' },
+          { nombre: 'Soportes para reparación de motor', foto: 'fab-soporte-reparacion-motor' },
+        ],
       },
       {
         id: 'componentes',
         titulo: 'Componentes hidráulicos',
         icono: 'gear',
         resumen: 'Fabricación de piezas y accesorios hidráulicos según plano o muestra.',
-        equipos: [{ nombre: 'Acoples' }, { nombre: 'Retenes' }, { nombre: 'Rines' }, { nombre: 'Llaves hidráulicas' }, { nombre: 'Llaves de paso' }],
+        equipos: [
+          { nombre: 'Acoples', foto: 'acoples' },
+          { nombre: 'Retenes', foto: 'retenes' },
+          { nombre: 'Sellos hidráulicos', foto: 'sellos-hidraulicos' },
+          { nombre: 'Llaves hidráulicas', foto: 'llaves-hidraulicas' },
+          { nombre: 'Llaves de paso', foto: 'llaves-de-paso' },
+        ],
       },
     ],
     incluye: ['Fabricación según plano, muestra o requerimiento', 'Materiales adecuados para trabajo pesado', 'Pruebas de presión y funcionamiento', 'Garantía por escrito'],
     seo: {
       titulo: 'Fabricación de equipos hidráulicos en Lima',
       descripcion:
-        'Fabricamos a medida elevadores, gatas y prensas hidráulicas, acoples, retenes, rines, llaves hidráulicas y llaves de paso. Hidrofluid Service, Santa Anita, Lima.',
+        'Fabricamos a medida elevadores, gatas, prensas y soportes para reparación de motor, acoples, retenes, sellos hidráulicos, llaves hidráulicas y llaves de paso. Hidrofluid Service, Santa Anita, Lima.',
     },
   },
 ];
