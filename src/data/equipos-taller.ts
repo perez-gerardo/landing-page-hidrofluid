@@ -379,29 +379,6 @@ export const equiposTaller: Producto[] = [
     "pendiente": true
   },
   {
-    "slug": "prensa-hidraulica-10-ton-ty10003",
-    "nombre": "Prensa hidráulica 10 ton TY10003",
-    "categoria": "prensas-hidraulicas",
-    "familia": "hasta-20",
-    "ref": "TY10003",
-    "capacidad": "10 toneladas",
-    "resumen": "Prensa hidráulica de banco de 10 toneladas con bomba manual, manómetro y mesa regulable en altura. Ideal para montar y desmontar rodamientos, bujes y piezas a presión en taller.",
-    "specs": [
-      [
-        "Capacidad",
-        "10 toneladas"
-      ],
-      [
-        "Salida de pistón",
-        "175 mm"
-      ]
-    ],
-    "caracteristicas": [
-      "Sistema hidráulico"
-    ],
-    "pendiente": true
-  },
-  {
     "slug": "prensa-hidraulica-20-ton-trsp20ham",
     "nombre": "Prensa hidráulica 20 ton TRSP20HAM",
     "categoria": "prensas-hidraulicas",
