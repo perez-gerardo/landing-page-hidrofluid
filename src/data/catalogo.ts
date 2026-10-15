@@ -228,12 +228,11 @@ const otros: Producto[] = [
     pendiente: true,
   },
   {
-    slug: 'gata-de-transmision-de-piso',
-    nombre: 'Gata de transmisión de piso',
+    slug: 'gata-de-transmision',
+    nombre: 'Gata de transmisión',
     categoria: 'gatas-de-transmision',
-    familia: 'piso',
-    resumen: 'Gata de transmisión baja con ruedas giratorias, ideal para fosas y elevadores de taller.',
-    foto: 'gata-transmision-taller',
+    resumen: 'Gata de transmisión con plataforma regulable y cadena de sujeción para montar y desmontar cajas de cambio en taller.',
+    foto: 'gata-de-transmision',
     pendiente: true,
   },
   {

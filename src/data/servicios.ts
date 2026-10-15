@@ -74,7 +74,7 @@ export const servicios: Servicio[] = [
         equipos: [
           { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'gata-botella-10-ton' },
           { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'gata-lagarto-3-ton' },
-          { nombre: 'Gata de transmisión', foto: 'gata-transmision-taller' },
+          { nombre: 'Gata de transmisión', foto: 'gata-de-transmision' },
           { nombre: 'Prensa hidráulica', foto: 'prensa-hidraulica-de-taller' },
           { nombre: 'Pluma hidráulica', foto: 'pluma-hidraulica-5-ton' },
           { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'soportes-reparacion-motor' },
@@ -144,7 +144,7 @@ export const servicios: Servicio[] = [
           { nombre: 'Retenes', foto: 'retenes' },
           { nombre: 'Sellos hidráulicos', foto: 'sellos-hidraulicos' },
           { nombre: 'Llaves hidráulicas', foto: 'llaves-hidraulicas' },
-          { nombre: 'Llaves de paso', foto: 'llaves-de-paso' },
+          { nombre: 'Mangueras hidráulicas', foto: 'mangueras-hidraulicas' },
         ],
       },
     ],
@@ -152,7 +152,7 @@ export const servicios: Servicio[] = [
     seo: {
       titulo: 'Fabricación de equipos hidráulicos en Lima',
       descripcion:
-        'Fabricamos a medida elevadores, gatas, prensas y soportes para reparación de motor, acoples, retenes, sellos hidráulicos, llaves hidráulicas y llaves de paso. Hidrofluid Service, Santa Anita, Lima.',
+        'Fabricamos a medida elevadores, gatas, prensas y soportes para reparación de motor, acoples, retenes, sellos hidráulicos, llaves hidráulicas y mangueras hidráulicas. Hidrofluid Service, Santa Anita, Lima.',
     },
   },
 ];

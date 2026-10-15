@@ -51,7 +51,7 @@ export const serviciosHome = [
   },
   {
     titulo: 'Fabricación',
-    texto: 'Elevadores, gatas, prensas, acoples, retenes, sellos hidráulicos, llaves hidráulicas y llaves de paso, a medida.',
+    texto: 'Elevadores, gatas, prensas, acoples, retenes, sellos hidráulicos, llaves hidráulicas y mangueras hidráulicas, a medida.',
     href: '/servicios/fabricacion',
     foto: 'srv-fabricacion',
   },
