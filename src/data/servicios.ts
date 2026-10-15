@@ -59,11 +59,11 @@ export const servicios: Servicio[] = [
         icono: 'crane',
         resumen: 'Mantenimiento de estocas, transpaletas manuales y eléctricas, montacargas y elevadores industriales.',
         equipos: [
-          { nombre: 'Estocas', detalle: 'Apiladores hidráulicos manuales.', foto: 'apilador-hidraulico-manual' },
-          { nombre: 'Transpaleta manual', foto: 'transpaleta-manual' },
-          { nombre: 'Transpaleta eléctrica', foto: 'srv-montacargas' },
-          { nombre: 'Montacargas', foto: 'acc-montacargas' },
-          { nombre: 'Elevadores industriales', foto: 'acc-elevador' },
+          { nombre: 'Estocas', detalle: 'Apiladores hidráulicos manuales.', foto: 'ia-estoca' },
+          { nombre: 'Transpaleta manual', foto: 'ia-transpaleta-manual' },
+          { nombre: 'Transpaleta eléctrica', foto: 'ia-transpaleta-electrica' },
+          { nombre: 'Montacargas', foto: 'ia-montacargas' },
+          { nombre: 'Elevadores industriales', foto: 'ia-elevador' },
         ],
       },
       {
@@ -72,11 +72,11 @@ export const servicios: Servicio[] = [
         icono: 'gear',
         resumen: 'Reparación y mantenimiento de gatas de distintos tipos y tonelajes, prensas y plumas hidráulicas.',
         equipos: [
-          { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'acc-gata-botella' },
-          { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'acc-gata-lagarto' },
+          { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'ia-gata-botella' },
+          { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'ia-gata-lagarto' },
           { nombre: 'Gata de transmisión', foto: 'srv-hidraulicos' },
           { nombre: 'Prensa hidráulica', foto: 'srv-fabricacion' },
-          { nombre: 'Pluma hidráulica', foto: 'acc-pluma' },
+          { nombre: 'Pluma hidráulica', foto: 'ia-pluma' },
         ],
       },
       {
@@ -85,7 +85,7 @@ export const servicios: Servicio[] = [
         icono: 'wrench',
         resumen: 'Mantenimiento de pistolas de impacto de todas las capacidades.',
         equipos: [
-          { nombre: 'Pistola de impacto neumática', foto: 'acc-pistola-neumatica' },
+          { nombre: 'Pistola de impacto neumática', foto: 'ia-pistola-neumatica' },
           { nombre: 'Pistola de impacto eléctrica', foto: 'acc-pistola-electrica' },
           { nombre: 'Pistola de impacto inalámbrica', foto: 'srv-pistolas' },
           { nombre: 'Pistola de impacto de alto torque', detalle: 'Encastre de 1", cañón corto y largo.', foto: 'pistola-neumatica-1-4800-nm-canon-largo' },
@@ -98,10 +98,10 @@ export const servicios: Servicio[] = [
         resumen:
           'Calibración, verificación y mantenimiento de torquímetros y herramientas de torque, para que cada ajuste se haga con el valor correcto.',
         equipos: [
-          { nombre: 'Torquímetros de click', detalle: 'Calibración y verificación.', foto: 'acc-torquimetro' },
-          { nombre: 'Torquímetros digitales', detalle: 'Calibración y verificación.', foto: 'torquimetro-digital' },
+          { nombre: 'Torquímetros de click', detalle: 'Calibración y verificación.', foto: 'ia-torquimetro-click' },
+          { nombre: 'Torquímetros digitales', detalle: 'Calibración y verificación.', foto: 'ia-torquimetro-digital' },
           { nombre: 'Torquímetros de dial', detalle: 'Calibración y verificación.', foto: 'torquimetro-de-dial' },
-          { nombre: 'Llaves de torque hidráulicas', detalle: 'Mantenimiento y calibración.', foto: 'llave-de-torque-con-reaccion' },
+          { nombre: 'Llaves de torque hidráulicas', detalle: 'Mantenimiento y calibración.', foto: 'ia-llave-torque-hidraulica' },
           { nombre: 'Llaves de torque eléctricas y a batería', detalle: 'Mantenimiento y calibración.', foto: 'llave-de-torque-electrica' },
         ],
       },
@@ -144,7 +144,7 @@ export const servicios: Servicio[] = [
           { nombre: 'Retenes', foto: 'retenes' },
           { nombre: 'Sellos hidráulicos', foto: 'sellos-hidraulicos' },
           { nombre: 'Llaves hidráulicas', foto: 'llaves-hidraulicas' },
-          { nombre: 'Mangueras hidráulicas', foto: 'mangueras-hidraulicas' },
+          { nombre: 'Mangueras hidráulicas', foto: 'ia-mangueras' },
         ],
       },
     ],

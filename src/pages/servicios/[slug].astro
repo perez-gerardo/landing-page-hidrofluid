@@ -90,7 +90,7 @@ const ld = {
                       <>
                         <Image src={f.img} alt={`${e.nombre}, ${s.menu.toLowerCase()}`} widths={[360, 560, 720]} sizes="(max-width: 720px) 100vw, 320px" />
                         {
-                          !f.blanco && (
+                          !f.blanco && /^(ia|srv)-/.test(e.foto ?? '') && (
                             <span class="svc-item-brand" aria-label="Servicio Hidrofluid">
                               <Image src={logoHidrofluid} alt="Hidrofluid Service" widths={[96, 152]} sizes="76px" />
                             </span>
