@@ -1,3 +1,4 @@
+import { initBuscador } from './buscar.js';
 // Comportamiento de la web: menú móvil, apariciones al hacer scroll y sección actual en la navegación.
 // Se carga como módulo desde Layout.astro.
 
@@ -32,6 +33,8 @@ function init() {
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
     reveals.forEach(function (el) { revealIO.observe(el); });
   }
+
+  initBuscador();
 
   /* ---------- Carrusel de equipos ---------- */
   document.querySelectorAll('[data-carrusel]').forEach(function (car) {

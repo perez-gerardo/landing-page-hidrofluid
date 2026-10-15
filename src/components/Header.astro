@@ -67,6 +67,9 @@ const enServicios = ruta.startsWith('/servicios');
       {enlaces.map((l) => <a class="nav-item" href={l.href}>{l.texto}</a>)}
     </nav>
     <div class="header-actions">
+      <button class="search-btn" type="button" aria-label="Buscar equipos y servicios" aria-haspopup="dialog" aria-controls="buscador" data-buscar-abrir>
+        <Icon name="search" class="ico" /><span class="search-btn-txt">Buscar</span><kbd class="search-kbd">/</kbd>
+      </button>
       <a class="btn btn-sm btn-primary" href={wa()} target="_blank" rel="noopener">Cotizar por WhatsApp</a>
       <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
         <span></span><span></span>
@@ -74,6 +77,21 @@ const enServicios = ruta.startsWith('/servicios');
     </div>
   </div>
 </header>
+<div class="buscador" id="buscador" role="dialog" aria-modal="true" aria-label="Buscar en Hidrofluid" hidden data-wa={empresa.whatsapp}>
+  <div class="buscador-box">
+    <div class="buscador-bar">
+      <Icon name="search" class="ico" />
+      <input type="search" class="buscador-input" placeholder="Busca un equipo o servicio: gata 20 ton, prensa, hidrolavadora…" autocomplete="off" spellcheck="false" aria-label="Buscar" aria-controls="buscador-res" />
+      <button type="button" class="buscador-cerrar" aria-label="Cerrar buscador" data-buscar-cerrar><Icon name="close" class="ico" /></button>
+    </div>
+    <div class="buscador-sug" data-buscar-sug>
+      <span>Búsquedas frecuentes:</span>
+      <button type="button">gata botella</button><button type="button">gata de transmisión</button><button type="button">prensa hidráulica</button><button type="button">hidrolavadora</button><button type="button">pistola de impacto</button><button type="button">torquímetro</button>
+    </div>
+    <ul class="buscador-res" id="buscador-res" role="listbox" aria-label="Resultados"></ul>
+    <p class="buscador-vacio" hidden></p>
+  </div>
+</div>
 <div class="menu" id="menu" aria-hidden="true">
   <a class="menu-link" href="/productos">Venta de equipos</a>
   {

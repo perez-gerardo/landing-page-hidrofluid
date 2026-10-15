@@ -77,7 +77,6 @@ export const servicios: Servicio[] = [
           { nombre: 'Gata de transmisión', foto: 'acc-gata-transmision' },
           { nombre: 'Prensa hidráulica', foto: 'acc-prensa' },
           { nombre: 'Pluma hidráulica', foto: 'acc-pluma' },
-          { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'acc-soportes' },
         ],
       },
       {
@@ -89,6 +88,7 @@ export const servicios: Servicio[] = [
           { nombre: 'Pistola de impacto neumática', foto: 'acc-pistola-neumatica' },
           { nombre: 'Pistola de impacto eléctrica', foto: 'acc-pistola-electrica' },
           { nombre: 'Pistola de impacto inalámbrica', foto: 'pistola-inalambrica-3-4-1980-nm' },
+          { nombre: 'Pistola de impacto de alto torque', detalle: 'Encastre de 1", cañón corto y largo.', foto: 'pistola-neumatica-1-4800-nm-canon-largo' },
         ],
       },
       {
