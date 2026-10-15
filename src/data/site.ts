@@ -72,16 +72,14 @@ export const nosotros = {
   valores: ['Compromiso', 'Calidad', 'Experiencia', 'Respuesta rápida'],
 } as const;
 
-// Clientes de Hidrofluid. `logo` = archivo en src/assets/clientes (sin extensión).
-// `claro: true` = el logo es oscuro o trae fondo blanco y se muestra sobre una tarjeta blanca.
-// PENDIENTE: logo de Montana y autorización de cada cliente para mostrar su logo.
-// Mientras no haya logo, se muestra el nombre en texto.
+// Clientes de Hidrofluid (solo los que tienen logo). `logo` = archivo en src/assets/clientes (sin extensión).
+// Los logos están preparados para fondo oscuro (versiones claras o en blanco).
+// PENDIENTE: autorización de cada cliente para mostrar su logo.
 export const clientes = [
-  { nombre: 'San Bartolomé', logo: 'san-bartolome', alt: 'San Bartolomé, 34 años ofreciendo soluciones en transporte' },
-  { nombre: 'JCH Llantas', logo: 'jch-llantas', alt: 'JCH Llantas' },
   { nombre: 'International Camiones del Perú', logo: 'international-camiones', alt: 'International Camiones del Perú' },
+  { nombre: 'San Bartolomé', logo: 'san-bartolome', alt: 'San Bartolomé' },
+  { nombre: 'JCH Llantas', logo: 'jch-llantas', alt: 'JCH Llantas' },
   { nombre: 'Tracto Camiones USA', logo: 'tracto-camiones', alt: 'Tracto Camiones USA' },
-  { nombre: 'Granotec', logo: 'granotec', alt: 'Granotec', claro: true },
-  { nombre: 'Montana', logo: null },
-  { nombre: 'Transportes 77', logo: 'transportes-77', alt: 'Transportes 77 S.A.', claro: true },
+  { nombre: 'Transportes 77', logo: 'transportes-77', alt: 'Transportes 77 S.A.' },
+  { nombre: 'Granotec', logo: 'granotec', alt: 'Granotec' },
 ] as const;

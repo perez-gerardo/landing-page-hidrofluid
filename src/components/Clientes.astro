@@ -1,34 +1,27 @@
 ---
-// Banner "Nuestros clientes" franja oscura con logos en desplazamiento lento.
+// Banner "Nuestros clientes": franja oscura con los logos en tarjetas iguales.
+// Sin animación (se desliza con el dedo en móvil) para que el scroll vaya fluido.
 import { Image } from 'astro:assets';
 import { clientes } from '../data/site';
 
 const logos = import.meta.glob<{ default: ImageMetadata }>('../assets/clientes/*.png', { eager: true });
-const logo = (n: string | null) => (n ? logos[`../assets/clientes/${n}.png`]?.default : undefined);
+const logo = (n: string) => logos[`../assets/clientes/${n}.png`]?.default;
 ---
 
 <section class="clientes on-dark" aria-labelledby="clientes-t">
   <div class="wrap">
     <h2 class="clientes-t" id="clientes-t">Nuestros clientes</h2>
   </div>
-  <div class="clientes-track" role="list">
+  <ul class="clientes-grid">
     {
-      [0, 1].map((copia) => (
-        <ul class="clientes-lista" aria-hidden={copia === 1 ? 'true' : undefined}>
-          {clientes.map((c) => {
-            const l = logo(c.logo);
-            return (
-              <li class:list={['cliente', { claro: 'claro' in c }]} role={copia === 0 ? 'listitem' : undefined}>
-                {l ? (
-                  <Image src={l} alt={copia === 0 ? ('alt' in c ? c.alt : c.nombre) : ''} height={64} densities={[1, 2]} loading="lazy" />
-                ) : (
-                  <span class="cliente-nombre">{c.nombre}</span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      ))
+      clientes.map((c) => {
+        const l = logo(c.logo);
+        return (
+          <li class="cliente-card">
+            {l && <Image src={l} alt={c.alt} height={80} densities={[1, 2]} loading="lazy" decoding="async" />}
+          </li>
+        );
+      })
     }
-  </div>
+  </ul>
 </section>

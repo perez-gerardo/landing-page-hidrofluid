@@ -685,3 +685,14 @@ a.foot-soc:hover { background: var(--teal-d); color: #ffffff; transform: transla
 .cliente.claro img[src*="transportes"] { height: 60px; }
 .svc-item-media img { padding: var(--s200); }
 .svc-item-media.is-foto img { object-fit: cover; padding: 0; }
+
+/* Clientes: grilla fija (sin animación); en móvil fila deslizable */
+.clientes-grid { list-style: none; margin: 0 auto; padding: 0 max(16px, calc((100vw - 1200px) / 2)); max-width: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s200); }
+.cliente-card { height: 104px; display: flex; align-items: center; justify-content: center; padding: var(--s200) var(--s300); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-xl); transition: background 300ms var(--ease), border-color 300ms var(--ease); }
+.cliente-card:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); }
+.cliente-card img { max-width: 100%; max-height: 56px; width: auto; height: auto; object-fit: contain; }
+@media (max-width: 1000px) {
+  .clientes-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: var(--s100); }
+  .clientes-grid::-webkit-scrollbar { display: none; }
+  .cliente-card { flex: 0 0 min(220px, 60vw); scroll-snap-align: start; }
+}

@@ -49,8 +49,8 @@ export const servicios: Servicio[] = [
         icono: 'drop',
         resumen: 'Mantenimiento de hidrolavadoras industriales de agua fría y de agua caliente, Kärcher y multimarca.',
         equipos: [
-          { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.', foto: 'hidrolavadora-agua-fria' },
-          { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.', foto: 'hidrolavadora-agua-caliente' },
+          { nombre: 'Hidrolavadora industrial de agua fría', detalle: 'Bomba, pistola, lanza, mangueras y accesorios.', foto: 'acc-hidrolavado-agua-fria' },
+          { nombre: 'Hidrolavadora industrial de agua caliente', detalle: 'Incluye el sistema de calentamiento.', foto: 'acc-hidrolavado-agua-caliente' },
         ],
       },
       {
@@ -62,8 +62,8 @@ export const servicios: Servicio[] = [
           { nombre: 'Estocas', detalle: 'Apiladores hidráulicos manuales.', foto: 'apilador-hidraulico-manual' },
           { nombre: 'Transpaleta manual', foto: 'transpaleta-manual' },
           { nombre: 'Transpaleta eléctrica', foto: 'srv-montacargas' },
-          { nombre: 'Montacargas', foto: 'montacargas' },
-          { nombre: 'Elevadores industriales', foto: 'elevador-de-tijera' },
+          { nombre: 'Montacargas', foto: 'acc-montacargas' },
+          { nombre: 'Elevadores industriales', foto: 'acc-elevador' },
         ],
       },
       {
@@ -72,12 +72,12 @@ export const servicios: Servicio[] = [
         icono: 'gear',
         resumen: 'Reparación y mantenimiento de gatas de distintos tipos y tonelajes, prensas y plumas hidráulicas.',
         equipos: [
-          { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'gata-botella-10-ton' },
-          { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'gata-lagarto-3-ton' },
-          { nombre: 'Gata de transmisión', foto: 'gata-de-transmision' },
-          { nombre: 'Prensa hidráulica', foto: 'prensa-hidraulica-de-taller' },
-          { nombre: 'Pluma hidráulica', foto: 'pluma-hidraulica-5-ton' },
-          { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'soportes-reparacion-motor' },
+          { nombre: 'Gata botella', detalle: 'Distintos tonelajes.', foto: 'acc-gata-botella' },
+          { nombre: 'Gata lagarto', detalle: 'Distintos tonelajes.', foto: 'acc-gata-lagarto' },
+          { nombre: 'Gata de transmisión', foto: 'acc-gata-transmision' },
+          { nombre: 'Prensa hidráulica', foto: 'acc-prensa' },
+          { nombre: 'Pluma hidráulica', foto: 'acc-pluma' },
+          { nombre: 'Soportes de motor y de corona', detalle: 'Reparación y mantenimiento.', foto: 'acc-soportes' },
         ],
       },
       {
@@ -86,8 +86,8 @@ export const servicios: Servicio[] = [
         icono: 'wrench',
         resumen: 'Mantenimiento de pistolas de impacto de todas las capacidades.',
         equipos: [
-          { nombre: 'Pistola de impacto neumática', foto: 'llave-de-impacto-neumatica' },
-          { nombre: 'Pistola de impacto eléctrica', foto: 'pistola-inalambrica-1-2500-nm' },
+          { nombre: 'Pistola de impacto neumática', foto: 'acc-pistola-neumatica' },
+          { nombre: 'Pistola de impacto eléctrica', foto: 'acc-pistola-electrica' },
           { nombre: 'Pistola de impacto inalámbrica', foto: 'pistola-inalambrica-3-4-1980-nm' },
         ],
       },
@@ -98,7 +98,7 @@ export const servicios: Servicio[] = [
         resumen:
           'Calibración, verificación y mantenimiento de torquímetros y herramientas de torque, para que cada ajuste se haga con el valor correcto.',
         equipos: [
-          { nombre: 'Torquímetros de click', detalle: 'Calibración y verificación.', foto: 'torquimetro-de-trinquete' },
+          { nombre: 'Torquímetros de click', detalle: 'Calibración y verificación.', foto: 'acc-torquimetro' },
           { nombre: 'Torquímetros digitales', detalle: 'Calibración y verificación.', foto: 'torquimetro-digital' },
           { nombre: 'Torquímetros de dial', detalle: 'Calibración y verificación.', foto: 'torquimetro-de-dial' },
           { nombre: 'Llaves de torque hidráulicas', detalle: 'Mantenimiento y calibración.', foto: 'llave-de-torque-con-reaccion' },
@@ -128,9 +128,9 @@ export const servicios: Servicio[] = [
         icono: 'crane',
         resumen: 'Fabricamos equipos para taller según tu necesidad.',
         equipos: [
-          { nombre: 'Elevadores', foto: 'elevador-de-rampas' },
-          { nombre: 'Gatas', foto: 'surtido-de-gatas' },
-          { nombre: 'Prensas', foto: 'prensa-hidraulica-60-ton' },
+          { nombre: 'Elevadores', foto: 'acc-fab-elevadores' },
+          { nombre: 'Gatas', foto: 'acc-fab-gatas' },
+          { nombre: 'Prensas', foto: 'acc-fab-prensas' },
           { nombre: 'Soportes para reparación de motor', foto: 'fab-soporte-reparacion-motor' },
         ],
       },
