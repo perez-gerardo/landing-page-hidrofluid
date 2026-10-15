@@ -385,7 +385,7 @@ export const equiposTaller: Producto[] = [
     "familia": "hasta-20",
     "ref": "TY10003",
     "capacidad": "10 toneladas",
-    "resumen": "Prensa hidráulica 10 ton TY10003. Equipo para prensado hidráulico: montaje y desmontaje de rodamientos, bujes y piezas a presión. Consulta disponibilidad, garantía y precio.",
+    "resumen": "Prensa hidráulica de banco de 10 toneladas con bomba manual, manómetro y mesa regulable en altura. Ideal para montar y desmontar rodamientos, bujes y piezas a presión en taller.",
     "specs": [
       [
         "Capacidad",

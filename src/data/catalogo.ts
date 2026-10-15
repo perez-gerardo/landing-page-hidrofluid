@@ -319,8 +319,6 @@ const fichasNuevas: Nuevo[] = [
   ['equipos-de-engrase', 'Equipos de engrase', 'lubricacion', 'engrase', 'Equipos de engrase: bombas, carrete retráctil y pistolas de engrase para flotas y talleres.'],
   ['llave-de-impacto-inalambrica-18v', 'Llave de impacto inalámbrica 18V', 'pistolas-de-impacto', undefined, 'Llave de impacto inalámbrica de 18 V para aflojar y ajustar tuercas sin cable ni compresor.'],
   ['llave-de-impacto-neumatica', 'Llave de impacto neumática', 'pistolas-de-impacto', undefined, 'Llave de impacto neumática para aflojar y ajustar tuercas de neumáticos y de alto torque.'],
-  ['prensa-con-compresor-de-resortes', 'Prensa con compresor de resortes', 'prensas-hidraulicas', undefined, 'Prensa hidráulica de taller con compresor de resortes para trabajos de suspensión.'],
-  ['prensa-hidraulica-de-taller', 'Prensa hidráulica de taller', 'prensas-hidraulicas', undefined, 'Prensa hidráulica de bastidor para montaje y desmontaje de rodamientos, bujes y piezas a presión.'],
   ['pluma-hidraulica-de-taller', 'Pluma hidráulica de taller', 'plumas-hidraulicas', undefined, 'Pluma hidráulica con base rodante para izar y trasladar motores y piezas pesadas en taller.'],
   ['plumas-plegables', 'Plumas plegables', 'plumas-hidraulicas', undefined, 'Plumas hidráulicas plegables que ocupan poco espacio al guardarlas.'],
 ];
