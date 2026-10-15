@@ -1,6 +1,6 @@
 # Landing page · HIDROFLUID SERVICE S.A.C.
 
-Sitio web estático de Hidrofluid Service (Santa Anita, Lima): venta de equipos, servicios de mantenimiento, fabricación y alquiler.
+Sitio web estático de Hidrofluid Service (Santa Anita, Lima): venta de equipos, servicios de mantenimiento y fabricación.
 Hecho con [Astro](https://astro.build) 7. Todos los botones de contacto abren WhatsApp.
 
 ## Cómo correrlo
@@ -20,7 +20,7 @@ npm run preview    # revisa el build
 | Qué | Dónde |
 |---|---|
 | Datos de la empresa, WhatsApp, textos de la portada, clientes | `src/data/site.ts` |
-| Páginas de servicio (mantenimiento, fabricación, alquiler) | `src/data/servicios.ts` |
+| Páginas de servicio (mantenimiento, fabricación) | `src/data/servicios.ts` |
 | Categorías del catálogo de venta | `src/data/catalogo.ts` |
 | Productos generados (gatas, prensas, pistolas, elevadores…) | `src/data/gatas.ts`, `src/data/equipos-taller.ts` (no editar `equipos-taller.ts` a mano) |
 | Limpieza de marcas/códigos y nombres repetidos | `src/data/limpiar.ts` |

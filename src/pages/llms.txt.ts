@@ -8,7 +8,7 @@ export const GET: APIRoute = ({ site }) => {
   const lineas = [
     `# ${empresa.nombre}`,
     '',
-    `> Venta, mantenimiento, fabricación y alquiler de equipos hidráulicos e industriales en ${empresa.distrito}, ${empresa.ciudad}, Perú. Taller propio. Más de 10 años de experiencia.`,
+    `> Venta, mantenimiento y fabricación de equipos hidráulicos e industriales en ${empresa.distrito}, ${empresa.ciudad}, Perú. Taller propio. Más de 10 años de experiencia.`,
     '',
     '## Contacto',
     `- Dirección: ${empresa.direccion}, ${empresa.distrito}, ${empresa.ciudad}`,

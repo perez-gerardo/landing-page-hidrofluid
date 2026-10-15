@@ -35,7 +35,7 @@ export const wa = (asunto = '') =>
 export const seo = {
   titulo: 'Hidrofluid Service | Equipos hidráulicos en Santa Anita, Lima',
   descripcion:
-    'Venta, mantenimiento, fabricación y alquiler de equipos hidráulicos e industriales. Gatas, prensas, elevadores y más. Taller en Santa Anita, Lima.',
+    'Venta, mantenimiento y fabricación de equipos hidráulicos e industriales. Gatas, prensas, elevadores y más. Taller en Santa Anita, Lima.',
 };
 
 export const confianza = ['Más de 10 años de experiencia', 'Taller propio en Santa Anita', 'Atención in situ en Lima', 'Garantía por escrito'];
@@ -56,12 +56,6 @@ export const serviciosHome = [
     foto: 'srv-fabricacion',
   },
   {
-    titulo: 'Alquiler de equipos',
-    texto: 'Hidrolavadoras, montacargas, bombas y herramientas por día, semana o mes.',
-    href: '/servicios/alquiler-de-equipos',
-    foto: 'srv-montacargas',
-  },
-  {
     titulo: 'Venta de equipos',
     texto: 'Gatas, prensas, elevadores, compresoras, pistolas de impacto y más para tu taller.',
     href: '/productos',
@@ -72,7 +66,7 @@ export const serviciosHome = [
 // Textos del brochure 2025 de Hidrofluid.
 export const nosotros = {
   resumen:
-    'HIDROFLUID SERVICE S.A.C. es una empresa peruana con taller propio en Santa Anita. Vendemos, damos mantenimiento, fabricamos y alquilamos equipos industriales y automotrices, con más de 10 años de experiencia.',
+    'HIDROFLUID SERVICE S.A.C. es una empresa peruana con taller propio en Santa Anita. Vendemos, damos mantenimiento y fabricamos equipos industriales y automotrices, con más de 10 años de experiencia.',
   mision: 'Ser líderes en la importación y distribución de productos de alta calidad para satisfacer y solucionar las necesidades de nuestros clientes.',
   vision: 'Mantener un sólido posicionamiento y liderazgo, brindando oportunidades de negocio a nuestros clientes a través de la competitividad y la excelencia.',
   valores: ['Compromiso', 'Calidad', 'Experiencia', 'Respuesta rápida'],

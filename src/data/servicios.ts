@@ -5,7 +5,6 @@
 // Para ponerla, copia la foto (fondo limpio, sin logos, 4:3) a src/assets/servicios/<nombre>.jpg
 // y escribe `foto: '<nombre>'` en el equipo. Mientras falte, la web no muestra nada roto.
 //
-// PENDIENTE: Calibración y Capacitación (Hidrofluid no confirmó si ofrece Calibración).
 
 export type Equipo = {
   nombre: string;
@@ -92,12 +91,13 @@ export const servicios: Servicio[] = [
         id: 'electricos',
         titulo: 'Motores y equipos eléctricos',
         icono: 'engine',
-        resumen: 'Rebobinado de motores, motorreductores y mantenimiento de tableros y compresores.',
+        resumen: 'Rebobinado de motores, motorreductores, mantenimiento de tableros y compresores, y calibración de torquímetros.',
         equipos: [
           { nombre: 'Motores eléctricos', detalle: 'Diagnóstico y rebobinado.' },
           { nombre: 'Motorreductores' },
           { nombre: 'Tableros eléctricos', detalle: 'Megado, rotulado y diagramas unifilares.' },
           { nombre: 'Compresores' },
+          { nombre: 'Calibración de torquímetros', detalle: 'Calibración y verificación de torquímetros.' },
         ],
       },
     ],
@@ -105,7 +105,7 @@ export const servicios: Servicio[] = [
     seo: {
       titulo: 'Mantenimiento de equipos hidráulicos en Lima',
       descripcion:
-        'Mantenimiento preventivo y correctivo de hidrolavadoras industriales de agua fría y caliente, estocas, transpaletas manuales y eléctricas, gatas, prensas y pistolas de impacto. Taller en Santa Anita y atención in situ.',
+        'Mantenimiento preventivo y correctivo de hidrolavadoras industriales de agua fría y caliente, estocas, transpaletas manuales y eléctricas, gatas, prensas y pistolas de impacto, y calibración de torquímetros. Taller en Santa Anita y atención in situ.',
     },
   },
   {
@@ -137,35 +137,6 @@ export const servicios: Servicio[] = [
       titulo: 'Fabricación de equipos hidráulicos en Lima',
       descripcion:
         'Fabricamos a medida elevadores, gatas y prensas hidráulicas, acoples, retenes, rines, llaves hidráulicas y llaves de paso. Hidrofluid Service, Santa Anita, Lima.',
-    },
-  },
-  {
-    slug: 'alquiler-de-equipos',
-    menu: 'Alquiler de equipos',
-    titulo: 'Alquiler de equipos',
-    bajada: 'Por día, semana o mes',
-    intro:
-      'Alquila equipos revisados por nuestro taller y mantén tu operación en marcha mientras reparas los tuyos o cubres un pico de trabajo. Te confirmamos disponibilidad, condiciones y entrega por WhatsApp.',
-    icono: 'calendar',
-    grupos: [
-      {
-        id: 'disponibles',
-        titulo: 'Equipos disponibles',
-        icono: 'toolbox',
-        resumen: 'Equipos revisados antes de cada entrega.',
-        equipos: [
-          { nombre: 'Hidrolavadoras industriales' },
-          { nombre: 'Montacargas hidráulicos y estocas' },
-          { nombre: 'Bombas' },
-          { nombre: 'Gatas, plumas y prensas' },
-          { nombre: 'Herramientas de taller' },
-        ],
-      },
-    ],
-    incluye: ['Equipos revisados antes de cada entrega', 'Alquiler por día, semana o mes', 'Soporte técnico durante el alquiler'],
-    seo: {
-      titulo: 'Alquiler de equipos y maquinaria en Lima',
-      descripcion: 'Alquiler de hidrolavadoras, montacargas hidráulicos, estocas, bombas y herramientas por día, semana o mes en Lima. Hidrofluid Service.',
     },
   },
 ];
